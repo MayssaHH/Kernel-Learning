@@ -1,0 +1,213 @@
+{
+  "run_uuid": "test-1d8049e1-7057-4992-9263-0b86b6b7ea5e",
+  "created_utc": "2026-02-07T16:55:49.930198+00:00",
+  "config": {
+    "num_classes": 3,
+    "samples_per_class": 40,
+    "dimension": 4,
+    "epochs": 5,
+    "results_root": "experiments/classification/results",
+    "save_results": true,
+    "show_plots": false,
+    "class_means": [
+      [
+        2.200000047683716,
+        0.0,
+        -0.1641879826784134,
+        0.022749129682779312
+      ],
+      [
+        -1.100000023841858,
+        1.905255913734436,
+        -0.04716934263706207,
+        0.17016175389289856
+      ],
+      [
+        -1.100000023841858,
+        -1.905255913734436,
+        0.19214574992656708,
+        -0.08222190290689468
+      ]
+    ],
+    "class_covariances": [
+      [
+        [
+          1.4348180294036865,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.6943575143814087,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.6334888935089111,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.9711484909057617
+        ]
+      ],
+      [
+        [
+          1.5040316581726074,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.4262200593948364,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.5319654941558838,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.8005789518356323
+        ]
+      ],
+      [
+        [
+          1.9030258655548096,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.8811005353927612,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.8097479343414307,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.5154578685760498
+        ]
+      ]
+    ]
+  },
+  "metrics": {
+    "trained_accuracy": {
+      "Archi + All RBF": 0.875,
+      "Archi + All Linear": 0.6666666865348816,
+      "Archi + Alternating RBF/Linear": 0.8333333134651184,
+      "Archi + Alternating RBF/Linear/Poly": 0.875
+    },
+    "untrained_accuracy": {
+      "Archi + All RBF": 0.7916666865348816,
+      "Archi + All Linear": 0.6666666865348816,
+      "Archi + Alternating RBF/Linear": 0.8333333134651184,
+      "Archi + Alternating RBF/Linear/Poly": 0.875
+    },
+    "full_vector_baselines": {
+      "Full-Vector RBF (gamma=0.5)": 0.7083333134651184,
+      "Full-Vector Linear": 0.875
+    },
+    "loss_curves": {
+      "Archi + All RBF": [
+        -0.19975009560585022,
+        -0.2688124179840088,
+        -0.315100759267807,
+        -0.31656861305236816,
+        -0.31719616055488586
+      ],
+      "Archi + All Linear": [
+        -0.16756325960159302,
+        -0.23834457993507385,
+        -0.31370991468429565,
+        -0.36229124665260315,
+        -0.38509878516197205
+      ],
+      "Archi + Alternating RBF/Linear": [
+        -0.4016832411289215,
+        -0.4368911385536194,
+        -0.45175954699516296,
+        -0.45374950766563416,
+        -0.45422419905662537
+      ],
+      "Archi + Alternating RBF/Linear/Poly": [
+        -0.33720704913139343,
+        -0.33746248483657837,
+        -0.3377354145050049,
+        -0.3380277752876282,
+        -0.3383418023586273
+      ]
+    },
+    "accuracy_curve_epochs": [
+      0
+    ],
+    "accuracy_curves": {
+      "Archi + All RBF": [
+        0.8333333134651184
+      ],
+      "Archi + All Linear": [
+        0.6666666865348816
+      ],
+      "Archi + Alternating RBF/Linear": [
+        0.8333333134651184
+      ],
+      "Archi + Alternating RBF/Linear/Poly": [
+        0.875
+      ]
+    },
+    "final_alphas": {
+      "Archi + All RBF": [
+        0.559112012386322,
+        0.34878671169281006,
+        0.048486292362213135,
+        0.04361390322446823
+      ],
+      "Archi + All Linear": [
+        0.569525957107544,
+        0.00852440856397152,
+        0.020768340677022934,
+        0.4011811316013336
+      ],
+      "Archi + Alternating RBF/Linear": [
+        0.7262858748435974,
+        0.1547844111919403,
+        0.1121511310338974,
+        0.006778230890631676
+      ],
+      "Archi + Alternating RBF/Linear/Poly": [
+        0.4288744330406189,
+        0.5376057624816895,
+        0.024930089712142944,
+        0.008589443750679493
+      ]
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\test-1d8049e1-7057-4992-9263-0b86b6b7ea5e_modular_experiment\\data_scatter_first2dims.png",
+      "experiments\\classification\\results\\test-1d8049e1-7057-4992-9263-0b86b6b7ea5e_modular_experiment\\loss_curves.png",
+      "experiments\\classification\\results\\test-1d8049e1-7057-4992-9263-0b86b6b7ea5e_modular_experiment\\test_accuracy_curves.png",
+      "experiments\\classification\\results\\test-1d8049e1-7057-4992-9263-0b86b6b7ea5e_modular_experiment\\final_accuracy_bars.png",
+      "experiments\\classification\\results\\test-1d8049e1-7057-4992-9263-0b86b6b7ea5e_modular_experiment\\final_alphas.png"
+    ]
+  }
+}
