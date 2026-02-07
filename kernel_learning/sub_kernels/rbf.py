@@ -7,9 +7,13 @@ class RBFSubKernel(BaseSubKernel):
     """
     RBF (Gaussian) kernel: K[i,j] = exp(-gamma * (x[i] - x[j])^2)
     """
-    def __init__(self, initial_gamma: float = 1.0):
+    def __init__(self, initial_gamma: float = 1.0, **kwargs):
         super().__init__()
-        self.gamma = nn.Parameter(torch.tensor(initial_gamma))
+        is_random = kwargs.get("random", False)
+        if is_random:
+            self.gamma= nn.Parameter(torch.randn(1).abs() + 0.1)  # Random positive gamma
+        else:
+            self.gamma = nn.Parameter(torch.tensor(initial_gamma))
     
     def forward(self, x_col: torch.Tensor) -> torch.Tensor:
         # Vectorized: broadcast to compute all pairwise differences
