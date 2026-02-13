@@ -1,0 +1,57 @@
+{
+  "run_uuid": "23668c2b-f528-4bc4-bb0d-8b51ff9c0fea",
+  "created_utc": "2026-02-12T17:01:45.996614+00:00",
+  "config": {
+    "experiment_name": "test3_useless_feature_selection",
+    "experiment_slug": "test3_useless_features",
+    "dataset_name": "txt_X6_y6",
+    "signal_generator": "generate_from_xy_txt",
+    "signal_generator_kwargs": {
+      "x_path": "X_6.txt",
+      "y_path": "y_6.txt",
+      "shuffle": true
+    },
+    "num_signal_features": 2,
+    "original_signal_features": 2,
+    "allow_signal_expansion": true,
+    "signal_expansion_mode": "mixed",
+    "signal_expansion_noise_std": 0.01,
+    "noise_feature_counts": [
+      0
+    ],
+    "samples_per_class": 100,
+    "two_moons_noise_std": 0.1,
+    "useless_feature_std": 1.0,
+    "epochs": 300,
+    "lr": 0.01,
+    "lambda_ridge": 1.0,
+    "full_vector_rbf_gamma": 0.5,
+    "seed": 42,
+    "results_root": "experiments/classification/results",
+    "save_results": true,
+    "show_plots": true
+  },
+  "results_per_m": [
+    {
+      "useless_features": 0,
+      "dimension": 2,
+      "archi_all_rbf_accuracy": 0.5714285969734192,
+      "full_vector_rbf_accuracy": 0.9285714030265808,
+      "full_vector_linear_accuracy": 0.75,
+      "signal_alpha_mass": NaN,
+      "noise_alpha_mass": 0.0,
+      "alphas": [
+        NaN,
+        NaN
+      ]
+    }
+  ],
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\23668c2b-f528-4bc4-bb0d-8b51ff9c0fea_test3_useless_features\\signal_data_first2dims.png",
+      "experiments\\classification\\results\\23668c2b-f528-4bc4-bb0d-8b51ff9c0fea_test3_useless_features\\alphas_m0.png",
+      "experiments\\classification\\results\\23668c2b-f528-4bc4-bb0d-8b51ff9c0fea_test3_useless_features\\accuracy_vs_useless_features.png",
+      "experiments\\classification\\results\\23668c2b-f528-4bc4-bb0d-8b51ff9c0fea_test3_useless_features\\alpha_mass_vs_useless_features.png"
+    ]
+  }
+}

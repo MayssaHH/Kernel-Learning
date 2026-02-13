@@ -34,7 +34,7 @@ def generate_mixture_of_gaussians(number_of_classes: int = 2 , samples_per_class
     X = torch.cat(X, dim=0)
     #print("after cat X:", X)
     #print("\n \n \n")
-    #print("before cat Y:", Y,"\n \n \n")
+    print("before cat Y:", Y,"\n \n \n")
     #print("\n \n \n")
     Y = torch.cat(Y, dim=0)
    # print("after cat Y:", Y,"\n \n \n")

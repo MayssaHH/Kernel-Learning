@@ -44,6 +44,8 @@ def generate_gaussian_signal(
 def run_experiement(
     noise_feature_counts: list = None,
     dataset_name: str = "gaussian_mixture",
+    experiment_slug: str = "test5_useless_features",
+    experiment_name: str = "test5_useless_feature_selection",
     signal_generator: Callable = generate_gaussian_signal,
     signal_generator_kwargs: Optional[dict] = None,
     num_signal_features: Optional[int] = None,
@@ -80,6 +82,8 @@ def run_experiement(
     return run_experiement_core(
         noise_feature_counts=noise_feature_counts,
         dataset_name=dataset_name,
+        experiment_slug=experiment_slug,
+        experiment_name=experiment_name,
         signal_generator=signal_generator,
         signal_generator_kwargs=signal_generator_kwargs,
         num_signal_features=num_signal_features,
@@ -105,6 +109,8 @@ def run_experiement(
 if __name__ == "__main__":
     run_experiement(
         dataset_name="gaussian_mixture",
+        experiment_slug="test5_useless_features",
+        experiment_name="test5_useless_feature_selection",
         signal_generator=generate_gaussian_signal,
         signal_generator_kwargs={
             "samples_per_class": 300,

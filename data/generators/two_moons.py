@@ -47,3 +47,13 @@ def generate_two_moons(
         Y = Y[perm]
 
     return X, Y
+
+if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+
+    X, Y = generate_two_moons(samples_per_class=100, noise_std=0.08)
+    plt.scatter(X[:, 0], X[:, 1], c=Y, cmap="viridis")
+    plt.title("Two Moons Dataset")
+    plt.xlabel("X1")
+    plt.ylabel("X2")
+    plt.show()

@@ -1,0 +1,120 @@
+{
+  "run_uuid": "a5bdbb85-4308-4c24-8639-ee912ec7d51d",
+  "created_utc": "2026-02-12T16:51:09.751862+00:00",
+  "config": {
+    "experiment_name": "test3_useless_feature_selection",
+    "experiment_slug": "test3_useless_features",
+    "dataset_name": "two_moons",
+    "signal_generator": "generate_two_moons",
+    "signal_generator_kwargs": {
+      "samples_per_class": 300,
+      "noise_std": 0.1,
+      "radius": 1.0,
+      "shuffle": true
+    },
+    "num_signal_features": 2,
+    "original_signal_features": 2,
+    "allow_signal_expansion": true,
+    "signal_expansion_mode": "mixed",
+    "signal_expansion_noise_std": 0.01,
+    "noise_feature_counts": [
+      0,
+      2,
+      5,
+      10
+    ],
+    "samples_per_class": 300,
+    "two_moons_noise_std": 0.1,
+    "useless_feature_std": 1.0,
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 1.0,
+    "full_vector_rbf_gamma": 0.5,
+    "seed": 42,
+    "results_root": "experiments/classification/results",
+    "save_results": true,
+    "show_plots": true
+  },
+  "results_per_m": [
+    {
+      "useless_features": 0,
+      "dimension": 2,
+      "archi_all_rbf_accuracy": 0.7142857313156128,
+      "full_vector_rbf_accuracy": 0.9642857313156128,
+      "full_vector_linear_accuracy": 0.75,
+      "signal_alpha_mass": 0.9999996423721313,
+      "noise_alpha_mass": 0.0,
+      "alphas": [
+        0.6031822562217712,
+        0.3968174159526825
+      ]
+    },
+    {
+      "useless_features": 2,
+      "dimension": 4,
+      "archi_all_rbf_accuracy": 0.6785714030265808,
+      "full_vector_rbf_accuracy": 0.9642857313156128,
+      "full_vector_linear_accuracy": 0.7142857313156128,
+      "signal_alpha_mass": 0.7895946502685547,
+      "noise_alpha_mass": 0.21040506660938263,
+      "alphas": [
+        0.5698953866958618,
+        0.21969929337501526,
+        0.016161924228072166,
+        0.1942431479692459
+      ]
+    },
+    {
+      "useless_features": 5,
+      "dimension": 7,
+      "archi_all_rbf_accuracy": 0.6785714030265808,
+      "full_vector_rbf_accuracy": 0.9285714030265808,
+      "full_vector_linear_accuracy": 0.5714285969734192,
+      "signal_alpha_mass": 0.6966133117675781,
+      "noise_alpha_mass": 0.3033866286277771,
+      "alphas": [
+        0.38458389043807983,
+        0.3120293915271759,
+        0.11810916662216187,
+        0.04800095781683922,
+        0.025575580075383186,
+        0.011747692711651325,
+        0.09995323419570923
+      ]
+    },
+    {
+      "useless_features": 10,
+      "dimension": 12,
+      "archi_all_rbf_accuracy": 0.5714285969734192,
+      "full_vector_rbf_accuracy": 0.9285714030265808,
+      "full_vector_linear_accuracy": 0.5,
+      "signal_alpha_mass": 0.21874424815177917,
+      "noise_alpha_mass": 0.7812556624412537,
+      "alphas": [
+        0.21088379621505737,
+        0.007860459387302399,
+        0.03953118249773979,
+        0.23436574637889862,
+        0.005619626026600599,
+        0.08724123984575272,
+        0.1031404584646225,
+        0.02986898645758629,
+        0.024600176140666008,
+        0.14338934421539307,
+        0.09542446583509445,
+        0.018074490129947662
+      ]
+    }
+  ],
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\signal_data_first2dims.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\alphas_m0.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\alphas_m2.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\alphas_m5.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\alphas_m10.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\accuracy_vs_useless_features.png",
+      "experiments\\classification\\results\\a5bdbb85-4308-4c24-8639-ee912ec7d51d_test3_useless_features\\alpha_mass_vs_useless_features.png"
+    ]
+  }
+}

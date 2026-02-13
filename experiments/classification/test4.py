@@ -8,6 +8,8 @@ from experiments.classification.test3 import run_experiement as run_experiement_
 def run_experiement(
     noise_feature_counts: list = None,
     dataset_name: str = "concentric_circles",
+    experiment_slug: str = "test4_useless_features",
+    experiment_name: str = "test4_useless_feature_selection",
     signal_generator: Callable = generate_concentric_circles,
     signal_generator_kwargs: Optional[dict] = None,
     num_signal_features: Optional[int] = None,
@@ -45,6 +47,8 @@ def run_experiement(
     return run_experiement_core(
         noise_feature_counts=noise_feature_counts,
         dataset_name=dataset_name,
+        experiment_slug=experiment_slug,
+        experiment_name=experiment_name,
         signal_generator=signal_generator,
         signal_generator_kwargs=signal_generator_kwargs,
         num_signal_features=num_signal_features,
@@ -70,6 +74,8 @@ def run_experiement(
 if __name__ == "__main__":
     run_experiement(
         dataset_name="concentric_circles",
+        experiment_slug="test4_useless_features",
+        experiment_name="test4_useless_feature_selection",
         signal_generator=generate_concentric_circles,
         signal_generator_kwargs={
             "samples_per_class": 300,

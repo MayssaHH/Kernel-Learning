@@ -4,7 +4,7 @@ import warnings
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Callable, Optional
-
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import torch
@@ -37,6 +37,41 @@ What we inspect:
 - Accuracy vs number of useless features
 - Whether alpha mass stays concentrated on the true signal dimensions
 """
+
+
+def generate_from_xy_txt(
+    x_path: str = "X_6.txt",
+    y_path: str = "y_6.txt",
+    delimiter: Optional[str] = None,
+    shuffle: bool = True,
+):
+    """
+    Load a dataset from two text files:
+    - X file shape: (n, p)
+    - y file shape: (n,) or (n, 1)
+    """
+    X_np = np.loadtxt(x_path, dtype=np.float64, delimiter=delimiter)
+    y_np = np.loadtxt(y_path, dtype=np.int64, delimiter=delimiter)
+
+    if X_np.ndim == 1:
+        X_np = X_np.reshape(-1, 1)
+    if y_np.ndim > 1:
+        y_np = y_np.reshape(-1)
+
+    if X_np.shape[0] != y_np.shape[0]:
+        raise ValueError(
+            f"X and y sample counts do not match. X has {X_np.shape[0]}, y has {y_np.shape[0]}."
+        )
+
+    X = torch.from_numpy(X_np).float()
+    y = torch.from_numpy(y_np).long()
+
+    if shuffle:
+        perm = torch.randperm(X.shape[0])
+        X = X[perm]
+        y = y[perm]
+
+    return X, y
 
 
 def append_useless_features(
@@ -117,6 +152,8 @@ def evaluate_kernel_model_with_krr(
 def run_experiement(
     noise_feature_counts: list = None,
     dataset_name: str = "two_moons",
+    experiment_slug: str = "test3_useless_features",
+    experiment_name: str = "test3_useless_feature_selection",
     signal_generator: Callable = generate_two_moons,
     signal_generator_kwargs: Optional[dict] = None,
     num_signal_features: Optional[int] = None,
@@ -140,7 +177,7 @@ def run_experiement(
     noise_feature_counts = noise_feature_counts or [0, 2, 5, 10, 20, 50]
     run_uuid = run_uuid or str(uuid.uuid4())
 
-    results_dir = Path(results_root) / f"{run_uuid}_test3_useless_features"
+    results_dir = Path(results_root) / f"{run_uuid}_{experiment_slug}"
     if save_results:
         results_dir.mkdir(parents=True, exist_ok=True)
     saved_plot_paths = []
@@ -442,7 +479,8 @@ def run_experiement(
         "run_uuid": run_uuid,
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "config": {
-            "experiment_name": "test3_useless_feature_selection",
+            "experiment_name": experiment_name,
+            "experiment_slug": experiment_slug,
             "dataset_name": dataset_name,
             "signal_generator": signal_generator.__name__,
             "signal_generator_kwargs": signal_generator_kwargs,
@@ -486,23 +524,24 @@ def run_experiement(
 
 if __name__ == "__main__":
     run_experiement(
-        dataset_name="two_moons",
-        signal_generator=generate_two_moons,
+        dataset_name="txt_X6_y6",
+        experiment_slug="test3_useless_features",
+        experiment_name="test3_useless_feature_selection",
+        signal_generator=generate_from_xy_txt,
         signal_generator_kwargs={
-            "samples_per_class": 300,
-            "noise_std": 0.10,
-            "radius": 1.0,
+            "x_path": "X_6.txt",
+            "y_path": "y_6.txt",
             "shuffle": True,
         },
-        num_signal_features=50,
+        num_signal_features=5,
         allow_signal_expansion=True,
         signal_expansion_mode="mixed",
         signal_expansion_noise_std=0.01,
-        noise_feature_counts=[0, 2, 5, 10, 20, 50,100,200],
-        samples_per_class=300,
+        noise_feature_counts=[0,2,5,10,20,50,100,200],
+        samples_per_class=100,
         two_moons_noise_std=0.10,
         useless_feature_std=1.0,
-        epochs=500,
+        epochs=300,
         lr=0.01,
         lambda_ridge=1.0,
         full_vector_rbf_gamma=0.5,
