@@ -8,4 +8,5 @@ __all__ = [
     "FrobeniusLoss",
     "MSELoss",
     "AlignmentLoss",
+    "AlignmentLossWithoutNormalization",
 ]
