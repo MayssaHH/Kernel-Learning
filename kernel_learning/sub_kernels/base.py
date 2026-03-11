@@ -11,7 +11,7 @@ from abc import ABC, abstractmethod
 class BaseSubKernel(nn.Module, ABC):
     """
     Base class for sub-kernels.
-    Each sub-kernel operates on a single feature dimension k and produces
+    Each sub-kernel operates on a single feature dimension k (#NOTE for all samples) and produces
     an (n, n) kernel matrix.
     """
     @abstractmethod # Every subclass of BaseSubKernel must implement forward with this signature.
