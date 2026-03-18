@@ -17,7 +17,7 @@ def generate_two_moons(
         Y: Tensor of shape (2 * samples_per_class,)
            labels are 0 for first moon and 1 for second moon
     """
-    theta = torch.rand(samples_per_class) * math.pi
+    theta = torch.rand(samples_per_class) * 2 * math.pi
 
     # First (upper) moon centered around origin.
     moon_a_x = radius * torch.cos(theta)

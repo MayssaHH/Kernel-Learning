@@ -1,0 +1,139 @@
+Hi
+
+Attached the file with the codes (it is python but Outlook will not allow you to download it if I use .py as suffix)
+It is commented
+I Did not run it, but I modified chat gtp  output code (after spending 10 minutes asking it to follow what I wanted...that stochastic parrot, to use Parisi's beautiful expressions for AI bots,  never listens) so it should run (if not it is because of some easy to fix stuff
+
+ output is training data X_, Y_, test data XT_ YT_ and if needed validation data XV_ YV_ with _ followed by a number.
+The mu files are not needed but they are for reference
+
+do not expand the predictors
+
+Add this
+
+snr_check = np.sum((mu_plus - mu_minus)**2) / (sigma**2)
+print("True SNR:", snr_check)
+
+to the main part if you want to check the snr is what it is
+
+Stefano Monni
+
+
+import numpy as np
+
+def simulate_data(
+    n=100,        #number of samples (both classes)
+    p1=2,        # unique features  to class -1
+    p2=2,        # unique  features  to class +1
+    pc=3,         #common predictors
+    pn=5,        # pure noise predictors
+    snr=2.0,     #  SNR
+    sigma=1.0,   # noise std
+    seed=123141, #seed
+    filex, filey, filem  #files to write data and means (means for ref)
+):
+    np.random.seed(seed)
+
+    p = p1 + p2 + pc + pn
+
+    d_shared = np.ones(pc)             # opposite sign
+    d_p1 = np.ones(p1)                 # only class -1
+    d_p2 = np.ones(p2)                 # only class +1
+  
+    mu_minus = np.concatenate([
+        d_shared,          # shared
+        d_p1,              # unique to -1
+        np.zeros(p2),      # unique to +1
+        np.zeros(pn)       # noise
+    ])
+
+    mu_plus = np.concatenate([
+        -d_shared,         # shared opposite
+        np.zeros(p1),
+        d_p2,
+        np.zeros(pn)
+    ])
+
+    # ---mean difference ---
+    diff = mu_plus - mu_minus
+    current_norm2 = np.dot(diff, diff)
+
+    scale = np.sqrt(snr * sigma**2 / current_norm2)
+
+    mu_minus *= scale
+    mu_plus *= scale
+
+    #  equal size 
+    n1 = n // 2
+    n2 = n - n1
+
+    X_minus = np.random.normal(
+        loc=mu_minus,
+        scale=sigma,
+        size=(n1, p)
+    )
+
+    X_plus = np.random.normal(
+        loc=mu_plus,
+        scale=sigma,
+        size=(n2, p)
+    )
+
+    X = np.vstack([X_minus, X_plus])
+    y = np.concatenate([-np.ones(n1), np.ones(n2)])
+
+    np.savetxt(f"{filey}", y, delimiter="\t")
+    np.savetxt(f"{filex}", X, delimiter="\t")
+    mu_matrix = np.vstack([mu_minus, mu_plus])
+    np.savetxt(f"{filem}", mu_matrix, delimiter="\t")
+
+
+   
+
+
+############################################################################################
+
+#total predictors 4+4+2+10  10 irrelevant
+
+p1=4;
+p2=4;
+pc=2;
+pn=10;  #irrelevant predictors 
+N=400
+snr=2
+startseed=57474
+
+
+iter=10
+for i in np.arange(iter):
+  seed= startseed+2*i +1
+  seedt= startseed+2*i +2
+  seedv=  startseed+2*iter + 1+i
+  #training data and the mu files of them for refs
+  filex= "X_" + str(i+1)
+  filey= "Y_" + str(i+1)
+  filemu="means_" + str(i+1)
+  simulate_data( N, p1, p2, pc, snr, seed, filex, filey, filemu)
+
+  #testing data
+  filex= "XT_" + str(i+1)        
+  filey= "YT_" + str(i+1)
+  filemu="meansT_" + str(i+1)
+  simulate_data(N, p1, p2, pc, snr, seed, filex, filey, filemu)
+  
+  #validation if needed
+  filex= "XV_" + str(i+1)        
+  filey= "YV_" + str(i+1)
+  filemu="meansV_" + str(i+1)
+  simulate_data(N, p1, p2, pc, snr, seed, filex, filey, filemu)
+ 
+
+
+
+
+
+##############################################################################
+
+
+
+
