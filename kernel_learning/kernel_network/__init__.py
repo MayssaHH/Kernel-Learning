@@ -1,3 +1,3 @@
 from .network import KernelNetwork
-
-__all__ = ["KernelNetwork"]
+from .KAN_Kernel import KAN_Kernel_NX
+__all__ = ["KernelNetwork", "KAN_Kernel_NX"]
