@@ -1,18 +1,20 @@
 import torch
-import torch.nn as nn
-
+from typing import Optional
 from .base import BaseSubKernel
+
 
 class LinearSubKernel(BaseSubKernel):
     """
-    Linear kernel: K[i,j] = sigma^2 * x[i] * x[j]
-    Equivalent to: K = sigma^2 * outer(x, x)
+    Linear kernel: K[i,j] = x[i] * y[j]
+    
+    Self-kernel:  K = outer(x, x)  -> (n, n)
+    Cross-kernel: K = outer(x, y)  -> (n1, n2)
     """
+
     def __init__(self):
         super().__init__()
 
-    
-    def forward(self, x_col: torch.Tensor) -> torch.Tensor:
-        # Vectorized: outer product. #NOTE: this is the same as doing x_col = x.unsqueeze(1)   # shape (n, 1); x_row = x.unsqueeze(0)   # shape (1, n); x_col @ x_row            
-        K = torch.outer(x_col, x_col)
-        return K
+    def forward(self, x_col: torch.Tensor, y_col: Optional[torch.Tensor] = None) -> torch.Tensor:
+        if y_col is None:
+            y_col = x_col
+        return torch.outer(x_col, y_col)
