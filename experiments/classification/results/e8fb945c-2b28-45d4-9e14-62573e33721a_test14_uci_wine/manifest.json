@@ -1,0 +1,166 @@
+{
+  "run_uuid": "e8fb945c-2b28-45d4-9e14-62573e33721a",
+  "created_utc": "2026-03-18T22:49:32.670341+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "wine",
+    "architectures": [
+      "all_rbf"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 178,
+      "n_features": 13
+    },
+    "class_balance": {
+      "positive_count": 59,
+      "negative_count": 119
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\wine.csv",
+    "numeric_feature_count": 13,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 142,
+      "test_size": 36,
+      "architectures": {
+        "all_rbf": {
+          "label": "Archi + All RBF",
+          "accuracy": 0.9166666865348816,
+          "final_alignment_loss": -0.7451582551002502,
+          "alphas": [
+            0.16150641441345215,
+            1.5702831660746597e-05,
+            8.213751425500959e-05,
+            0.2126079499721527,
+            0.03549111261963844,
+            0.07504734396934509,
+            0.10364706814289093,
+            0.021878335624933243,
+            0.007120742462575436,
+            1.1781348803197034e-05,
+            3.188554910593666e-05,
+            0.08546482771635056,
+            0.29709458351135254
+          ],
+          "top_feature_indices": [
+            12,
+            3,
+            0,
+            6,
+            11,
+            5,
+            4,
+            7,
+            8,
+            2
+          ],
+          "top_feature_alphas": [
+            0.29709458351135254,
+            0.2126079499721527,
+            0.16150641441345215,
+            0.10364706814289093,
+            0.08546482771635056,
+            0.07504734396934509,
+            0.03549111261963844,
+            0.021878335624933243,
+            0.007120742462575436,
+            8.213751425500959e-05
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_rbf": {
+      "label": "Archi + All RBF",
+      "mean_accuracy": 0.9166666865348816,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.9166666865348816,
+      "worst_split_accuracy": 0.9166666865348816,
+      "table_accuracy_percent_raw": 91.66666865348816,
+      "table_accuracy_percent_1dp": 91.7,
+      "mean_alphas": [
+        0.16150641441345215,
+        1.5702831660746597e-05,
+        8.213751425500959e-05,
+        0.2126079499721527,
+        0.03549111261963844,
+        0.07504734396934509,
+        0.10364706814289093,
+        0.021878335624933243,
+        0.007120742462575436,
+        1.1781348803197034e-05,
+        3.188554910593666e-05,
+        0.08546482771635056,
+        0.29709458351135254
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        12,
+        3,
+        0,
+        6,
+        11,
+        5,
+        4,
+        7,
+        8,
+        2,
+        10,
+        1,
+        9
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.29709458351135254,
+        0.2126079499721527,
+        0.16150641441345215,
+        0.10364706814289093,
+        0.08546482771635056,
+        0.07504734396934509,
+        0.03549111261963844,
+        0.021878335624933243,
+        0.007120742462575436,
+        8.213751425500959e-05,
+        3.188554910593666e-05,
+        1.5702831660746597e-05,
+        1.1781348803197034e-05
+      ]
+    }
+  },
+  "historical_context": {
+    "all_rbf": {
+      "num_other_runs_same_dataset": 1
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\first_split_data_preview.png",
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\accuracy_by_split.png",
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\mean_alphas_all_rbf.png",
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\alpha_heatmap_all_rbf.png",
+      "experiments\\classification\\results\\e8fb945c-2b28-45d4-9e14-62573e33721a_test14_uci_wine\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

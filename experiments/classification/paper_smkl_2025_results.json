@@ -1,0 +1,224 @@
+{
+  "source": {
+    "paper_title": "Sparse Multiple Kernel Learning: Alternating Best Response and Semidefinite Relaxations",
+    "paper_url": "https://arxiv.org/html/2511.21890",
+    "section": "5.2 Predictive Accuracy and Runtime",
+    "notes": "Values transcribed from paper tables."
+  },
+  "accuracy_percent_table2": [
+    {
+      "dataset": "iris",
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 96.7,
+      "Algorithm1_SMKL": 100.0
+    },
+    {
+      "dataset": "wine",
+      "EasyMKL": 97.2,
+      "AverageMKL": 97.2,
+      "CKA": 91.7,
+      "Algorithm1_SMKL": 100.0
+    },
+    {
+      "dataset": "breastcancer",
+      "EasyMKL": 93.0,
+      "AverageMKL": 92.1,
+      "CKA": 94.7,
+      "Algorithm1_SMKL": 98.3
+    },
+    {
+      "dataset": "ionosphere",
+      "EasyMKL": 73.2,
+      "AverageMKL": 74.6,
+      "CKA": 85.9,
+      "Algorithm1_SMKL": 93.0
+    },
+    {
+      "dataset": "spambase",
+      "EasyMKL": 90.4,
+      "AverageMKL": 87.6,
+      "CKA": 81.0,
+      "Algorithm1_SMKL": 90.9
+    },
+    {
+      "dataset": "banknote",
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 85.1,
+      "Algorithm1_SMKL": 100.0
+    },
+    {
+      "dataset": "heart",
+      "EasyMKL": 85.2,
+      "AverageMKL": 85.2,
+      "CKA": 86.9,
+      "Algorithm1_SMKL": 93.4
+    },
+    {
+      "dataset": "haberman",
+      "EasyMKL": 61.3,
+      "AverageMKL": 62.9,
+      "CKA": 66.1,
+      "Algorithm1_SMKL": 67.7
+    },
+    {
+      "dataset": "mammographic",
+      "EasyMKL": 80.8,
+      "AverageMKL": 79.3,
+      "CKA": 75.1,
+      "Algorithm1_SMKL": 84.5
+    },
+    {
+      "dataset": "parkinsons",
+      "EasyMKL": 82.1,
+      "AverageMKL": 82.1,
+      "CKA": 74.4,
+      "Algorithm1_SMKL": 89.7
+    }
+  ],
+  "runtime_seconds_table4": [
+    {
+      "dataset": "iris",
+      "EasyMKL": 0.03,
+      "AverageMKL": 0.002,
+      "CKA": 0.026,
+      "Algorithm1_SMKL": 0.022
+    },
+    {
+      "dataset": "wine",
+      "EasyMKL": 0.045,
+      "AverageMKL": 0.002,
+      "CKA": 0.029,
+      "Algorithm1_SMKL": 0.005
+    },
+    {
+      "dataset": "breastcancer",
+      "EasyMKL": 0.244,
+      "AverageMKL": 0.004,
+      "CKA": 0.061,
+      "Algorithm1_SMKL": 0.11
+    },
+    {
+      "dataset": "ionosphere",
+      "EasyMKL": 0.072,
+      "AverageMKL": 0.003,
+      "CKA": 0.036,
+      "Algorithm1_SMKL": 0.07
+    },
+    {
+      "dataset": "spambase",
+      "EasyMKL": 33.671,
+      "AverageMKL": 0.631,
+      "CKA": 8.859,
+      "Algorithm1_SMKL": 8.33
+    },
+    {
+      "dataset": "banknote",
+      "EasyMKL": 0.337,
+      "AverageMKL": 0.006,
+      "CKA": 0.301,
+      "Algorithm1_SMKL": 0.519
+    },
+    {
+      "dataset": "heart",
+      "EasyMKL": 0.062,
+      "AverageMKL": 0.003,
+      "CKA": 0.035,
+      "Algorithm1_SMKL": 0.188
+    },
+    {
+      "dataset": "haberman",
+      "EasyMKL": 0.029,
+      "AverageMKL": 1.907,
+      "CKA": 0.033,
+      "Algorithm1_SMKL": 0.025
+    },
+    {
+      "dataset": "mammographic",
+      "EasyMKL": 0.228,
+      "AverageMKL": 13.027,
+      "CKA": 0.125,
+      "Algorithm1_SMKL": 0.436
+    },
+    {
+      "dataset": "parkinsons",
+      "EasyMKL": 0.038,
+      "AverageMKL": 0.002,
+      "CKA": 0.028,
+      "Algorithm1_SMKL": 0.245
+    }
+  ],
+  "nonzero_kernel_count_table3": [
+    {
+      "dataset": "iris",
+      "EasyMKL": 10,
+      "AverageMKL": 10,
+      "CKA": 9,
+      "Algorithm1_SMKL": 1
+    },
+    {
+      "dataset": "wine",
+      "EasyMKL": 4,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 2
+    },
+    {
+      "dataset": "breastcancer",
+      "EasyMKL": 3,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 2
+    },
+    {
+      "dataset": "ionosphere",
+      "EasyMKL": 3,
+      "AverageMKL": 10,
+      "CKA": 6,
+      "Algorithm1_SMKL": 1
+    },
+    {
+      "dataset": "spambase",
+      "EasyMKL": 10,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 5
+    },
+    {
+      "dataset": "banknote",
+      "EasyMKL": 10,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 1
+    },
+    {
+      "dataset": "heart",
+      "EasyMKL": 3,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 4
+    },
+    {
+      "dataset": "haberman",
+      "EasyMKL": 8,
+      "AverageMKL": 10,
+      "CKA": 8,
+      "Algorithm1_SMKL": 1
+    },
+    {
+      "dataset": "mammographic",
+      "EasyMKL": 7,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 1
+    },
+    {
+      "dataset": "parkinsons",
+      "EasyMKL": 2,
+      "AverageMKL": 10,
+      "CKA": 7,
+      "Algorithm1_SMKL": 2
+    }
+  ]
+}

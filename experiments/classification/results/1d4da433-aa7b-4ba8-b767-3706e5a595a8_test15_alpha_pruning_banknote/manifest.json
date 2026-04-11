@@ -1,0 +1,270 @@
+{
+  "run_uuid": "1d4da433-aa7b-4ba8-b767-3706e5a595a8",
+  "created_utc": "2026-03-19T21:27:55.933283+00:00",
+  "config": {
+    "experiment_name": "test15_alpha_pruning_two_pass",
+    "dataset_name": "banknote",
+    "architectures": [
+      "all_rbf",
+      "half_rbf_half_linear",
+      "all_linear"
+    ],
+    "alpha_source": "all_rbf",
+    "alpha_keep_mass": 0.95,
+    "min_features_keep": 1,
+    "max_features_keep": null,
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "full_vector_rbf_gamma": 0.5,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 1372,
+      "n_features": 4
+    },
+    "class_balance": {
+      "positive_count": 610,
+      "negative_count": 762
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/00267/data_banknote_authentication.txt",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\banknote.csv",
+    "numeric_feature_count": 4,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 1097,
+      "test_size": 275,
+      "dimension_before": 4,
+      "dimension_after": 2,
+      "selected_feature_indices": [
+        0,
+        1
+      ],
+      "selected_feature_mass": 0.9999999999999998,
+      "selected_feature_threshold_alpha": 0.07952456819179991,
+      "alpha_source": "all_rbf",
+      "pass1": {
+        "architectures": {
+          "all_rbf": {
+            "label": "Archi + All RBF",
+            "accuracy": 0.9236363768577576,
+            "final_alignment_loss": -0.5640640258789062,
+            "alphas": [
+              0.92047518491745,
+              0.07952454686164856,
+              1.8646884394599137e-17,
+              2.5745831129590476e-16
+            ]
+          },
+          "half_rbf_half_linear": {
+            "label": "Archi + Half RBF/Half Linear",
+            "accuracy": 0.9090909361839294,
+            "final_alignment_loss": -0.5616769194602966,
+            "alphas": [
+              0.9011214375495911,
+              0.09887835383415222,
+              0.0,
+              9.402712695619523e-43
+            ]
+          },
+          "all_linear": {
+            "label": "Archi + All Linear",
+            "accuracy": 0.8799999952316284,
+            "final_alignment_loss": -0.5569678544998169,
+            "alphas": [
+              0.413404643535614,
+              0.5865947604179382,
+              0.0,
+              2.533489293909952e-07
+            ]
+          }
+        },
+        "full_vector_rbf_accuracy": 1.0,
+        "full_vector_linear_accuracy": 0.9745454788208008
+      },
+      "pass2": {
+        "architectures": {
+          "all_rbf": {
+            "label": "Archi + All RBF",
+            "accuracy": 0.9200000166893005,
+            "final_alignment_loss": -0.41173046827316284,
+            "alphas": [
+              0.7805655002593994,
+              0.2194339781999588
+            ]
+          },
+          "half_rbf_half_linear": {
+            "label": "Archi + Half RBF/Half Linear",
+            "accuracy": 0.8690909147262573,
+            "final_alignment_loss": -0.5165126323699951,
+            "alphas": [
+              0.9437447786331177,
+              0.05625465139746666
+            ]
+          },
+          "all_linear": {
+            "label": "Archi + All Linear",
+            "accuracy": 0.8727272748947144,
+            "final_alignment_loss": -0.5569679141044617,
+            "alphas": [
+              0.969883918762207,
+              0.030115703120827675
+            ]
+          }
+        },
+        "full_vector_rbf_accuracy": 0.9272727370262146,
+        "full_vector_linear_accuracy": 0.8727272748947144
+      }
+    }
+  ],
+  "summary": {
+    "models": {
+      "archi_all_rbf": {
+        "label": "Archi + All RBF",
+        "pass1_mean_accuracy": 0.9236363768577576,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 92.36363768577576,
+        "pass1_accuracy_percent_1dp": 92.4,
+        "pass2_mean_accuracy": 0.9200000166893005,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 92.00000166893005,
+        "pass2_accuracy_percent_1dp": 92.0,
+        "delta_mean_accuracy": -0.0036363601684570312,
+        "delta_percent_points": -0.3636360168457031,
+        "pass1_mean_alignment_loss": -0.5640640258789062,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.41173046827316284,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "archi_half_rbf_half_linear": {
+        "label": "Archi + Half RBF/Half Linear",
+        "pass1_mean_accuracy": 0.9090909361839294,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 90.90909361839294,
+        "pass1_accuracy_percent_1dp": 90.9,
+        "pass2_mean_accuracy": 0.8690909147262573,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 86.90909147262573,
+        "pass2_accuracy_percent_1dp": 86.9,
+        "delta_mean_accuracy": -0.04000002145767212,
+        "delta_percent_points": -4.000002145767212,
+        "pass1_mean_alignment_loss": -0.5616769194602966,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.5165126323699951,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "archi_all_linear": {
+        "label": "Archi + All Linear",
+        "pass1_mean_accuracy": 0.8799999952316284,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 87.99999952316284,
+        "pass1_accuracy_percent_1dp": 88.0,
+        "pass2_mean_accuracy": 0.8727272748947144,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 87.27272748947144,
+        "pass2_accuracy_percent_1dp": 87.3,
+        "delta_mean_accuracy": -0.0072727203369140625,
+        "delta_percent_points": -0.7272720336914062,
+        "pass1_mean_alignment_loss": -0.5569678544998169,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.5569679141044617,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "full_vector_rbf": {
+        "label": "Full-Vector RBF",
+        "pass1_mean_accuracy": 1.0,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 100.0,
+        "pass1_accuracy_percent_1dp": 100.0,
+        "pass2_mean_accuracy": 0.9272727370262146,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 92.72727370262146,
+        "pass2_accuracy_percent_1dp": 92.7,
+        "delta_mean_accuracy": -0.0727272629737854,
+        "delta_percent_points": -7.27272629737854
+      },
+      "full_vector_linear": {
+        "label": "Full-Vector Linear",
+        "pass1_mean_accuracy": 0.9745454788208008,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 97.45454788208008,
+        "pass1_accuracy_percent_1dp": 97.5,
+        "pass2_mean_accuracy": 0.8727272748947144,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 87.27272748947144,
+        "pass2_accuracy_percent_1dp": 87.3,
+        "delta_mean_accuracy": -0.10181820392608643,
+        "delta_percent_points": -10.181820392608643
+      }
+    },
+    "alpha_source": {
+      "mode": "all_rbf",
+      "alpha_keep_mass": 0.95,
+      "mean_source_alpha": [
+        0.9204754318081999,
+        0.07952456819179991,
+        1.8646889396084617e-17,
+        2.574583803516236e-16
+      ],
+      "top_feature_indices_by_mean_source_alpha": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "top_feature_alphas_by_mean_source_alpha": [
+        0.9204754318081999,
+        0.07952456819179991,
+        2.574583803516236e-16,
+        1.8646889396084617e-17
+      ],
+      "keep_frequency_by_feature": [
+        1.0,
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    "feature_pruning": {
+      "mean_selected_feature_count": 2.0,
+      "std_selected_feature_count": 0.0,
+      "mean_selected_feature_ratio": 0.5,
+      "mean_selected_feature_mass": 0.9999999999999998,
+      "mean_threshold_alpha": 0.07952456819179991
+    },
+    "paper_reference_accuracy_percent": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 85.1,
+      "Algorithm1_SMKL": 100.0
+    },
+    "notes": {
+      "paper_models_after_pruning": "Paper models (EasyMKL/AverageMKL/CKA/SMKL) are reported as reference values only. They are not retrained inside test15 because their training implementations are not in this repo."
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\first_split_data_preview.png",
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\accuracy_before_after_by_model.png",
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\accuracy_delta_by_model.png",
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\source_alpha_profile.png",
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\feature_keep_frequency.png",
+      "experiments\\classification\\results\\1d4da433-aa7b-4ba8-b767-3706e5a595a8_test15_alpha_pruning_banknote\\selected_feature_count_by_split.png"
+    ]
+  }
+}

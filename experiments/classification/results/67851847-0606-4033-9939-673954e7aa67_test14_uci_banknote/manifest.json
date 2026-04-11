@@ -1,0 +1,118 @@
+{
+  "run_uuid": "67851847-0606-4033-9939-673954e7aa67",
+  "created_utc": "2026-03-19T11:00:30.533548+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "banknote",
+    "architectures": [
+      "all_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 1372,
+      "n_features": 4
+    },
+    "class_balance": {
+      "positive_count": 610,
+      "negative_count": 762
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/00267/data_banknote_authentication.txt",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\banknote.csv",
+    "numeric_feature_count": 4,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 1097,
+      "test_size": 275,
+      "architectures": {
+        "all_linear": {
+          "label": "Archi + All Linear",
+          "accuracy": 0.8727272748947144,
+          "final_alignment_loss": -0.5569679141044617,
+          "alphas": [
+            0.3942410349845886,
+            0.6057587265968323,
+            1.4349574317413377e-13,
+            1.1898397822562856e-09
+          ],
+          "top_feature_indices": [
+            1,
+            0,
+            3,
+            2
+          ],
+          "top_feature_alphas": [
+            0.6057587265968323,
+            0.3942410349845886,
+            1.1898397822562856e-09,
+            1.4349574317413377e-13
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_linear": {
+      "label": "Archi + All Linear",
+      "mean_accuracy": 0.8727272748947144,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.8727272748947144,
+      "worst_split_accuracy": 0.8727272748947144,
+      "table_accuracy_percent_raw": 87.27272748947144,
+      "table_accuracy_percent_1dp": 87.3,
+      "mean_alphas": [
+        0.3942410349845886,
+        0.6057587265968323,
+        1.4349574317413377e-13,
+        1.1898397822562856e-09
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        1,
+        0,
+        3,
+        2
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.6057587265968323,
+        0.3942410349845886,
+        1.1898397822562856e-09,
+        1.4349574317413377e-13
+      ]
+    }
+  },
+  "historical_context": {
+    "all_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\first_split_data_preview.png",
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\accuracy_by_split.png",
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\mean_alphas_all_linear.png",
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\alpha_heatmap_all_linear.png",
+      "experiments\\classification\\results\\67851847-0606-4033-9939-673954e7aa67_test14_uci_banknote\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

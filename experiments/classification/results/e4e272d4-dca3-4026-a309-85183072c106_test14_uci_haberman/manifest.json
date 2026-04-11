@@ -1,0 +1,112 @@
+{
+  "run_uuid": "e4e272d4-dca3-4026-a309-85183072c106",
+  "created_utc": "2026-03-19T11:54:09.702248+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "haberman",
+    "architectures": [
+      "half_rbf_half_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 306,
+      "n_features": 3
+    },
+    "class_balance": {
+      "positive_count": 225,
+      "negative_count": 81
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/haberman/haberman.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\haberman.csv",
+    "numeric_feature_count": 3,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 244,
+      "test_size": 62,
+      "architectures": {
+        "half_rbf_half_linear": {
+          "label": "Archi + Half RBF/Half Linear",
+          "accuracy": 0.8225806355476379,
+          "final_alignment_loss": -0.06637819856405258,
+          "alphas": [
+            0.14104154706001282,
+            0.07705051451921463,
+            0.7819076180458069
+          ],
+          "top_feature_indices": [
+            2,
+            0,
+            1
+          ],
+          "top_feature_alphas": [
+            0.7819076180458069,
+            0.14104154706001282,
+            0.07705051451921463
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "half_rbf_half_linear": {
+      "label": "Archi + Half RBF/Half Linear",
+      "mean_accuracy": 0.8225806355476379,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.8225806355476379,
+      "worst_split_accuracy": 0.8225806355476379,
+      "table_accuracy_percent_raw": 82.2580635547638,
+      "table_accuracy_percent_1dp": 82.3,
+      "mean_alphas": [
+        0.14104154706001282,
+        0.07705051451921463,
+        0.7819076180458069
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        2,
+        0,
+        1
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.7819076180458069,
+        0.14104154706001282,
+        0.07705051451921463
+      ]
+    }
+  },
+  "historical_context": {
+    "half_rbf_half_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\first_split_data_preview.png",
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\accuracy_by_split.png",
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\mean_alphas_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\alpha_heatmap_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\e4e272d4-dca3-4026-a309-85183072c106_test14_uci_haberman\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

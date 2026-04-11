@@ -1,0 +1,212 @@
+{
+  "run_uuid": "a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4",
+  "created_utc": "2026-03-18T21:43:14.442841+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "ionosphere",
+    "architectures": [
+      "all_rbf"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 351,
+      "n_features": 34
+    },
+    "class_balance": {
+      "positive_count": 225,
+      "negative_count": 126
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/ionosphere/ionosphere.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\ionosphere.csv",
+    "numeric_feature_count": 34,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 280,
+      "test_size": 71,
+      "architectures": {
+        "all_rbf": {
+          "label": "Archi + All RBF",
+          "accuracy": 0.9577465057373047,
+          "final_alignment_loss": -0.42432156205177307,
+          "alphas": [
+            0.28390806913375854,
+            0.0008822741801850498,
+            0.10527893900871277,
+            0.19061706960201263,
+            0.2709782123565674,
+            0.006432951427996159,
+            0.004468126222491264,
+            5.0540103984531015e-05,
+            2.942117362181307e-06,
+            0.001090523786842823,
+            4.991153446098906e-07,
+            0.0006144126527942717,
+            1.5375771909020841e-06,
+            2.3804868760635145e-05,
+            0.018569830805063248,
+            0.00028832571115344763,
+            3.5317192669026554e-05,
+            0.011315342038869858,
+            2.670786125236191e-05,
+            0.004443369805812836,
+            2.3660391889279708e-05,
+            0.0016342771705240011,
+            1.367008962915861e-06,
+            0.005946934688836336,
+            0.0015865473542362452,
+            3.170360650983639e-05,
+            0.014524239115417004,
+            0.05963717773556709,
+            0.0038438166957348585,
+            7.026124512776732e-05,
+            0.0073000770062208176,
+            1.0626269613567274e-05,
+            0.005931776948273182,
+            0.00042868699529208243
+          ],
+          "top_feature_indices": [
+            0,
+            4,
+            3,
+            2,
+            27,
+            14,
+            26,
+            17,
+            30,
+            5
+          ],
+          "top_feature_alphas": [
+            0.28390806913375854,
+            0.2709782123565674,
+            0.19061706960201263,
+            0.10527893900871277,
+            0.05963717773556709,
+            0.018569830805063248,
+            0.014524239115417004,
+            0.011315342038869858,
+            0.0073000770062208176,
+            0.006432951427996159
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_rbf": {
+      "label": "Archi + All RBF",
+      "mean_accuracy": 0.9577465057373047,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.9577465057373047,
+      "worst_split_accuracy": 0.9577465057373047,
+      "table_accuracy_percent_raw": 95.77465057373047,
+      "table_accuracy_percent_1dp": 95.8,
+      "mean_alphas": [
+        0.28390806913375854,
+        0.0008822741801850498,
+        0.10527893900871277,
+        0.19061706960201263,
+        0.2709782123565674,
+        0.006432951427996159,
+        0.004468126222491264,
+        5.0540103984531015e-05,
+        2.942117362181307e-06,
+        0.001090523786842823,
+        4.991153446098906e-07,
+        0.0006144126527942717,
+        1.5375771909020841e-06,
+        2.3804868760635145e-05,
+        0.018569830805063248,
+        0.00028832571115344763,
+        3.5317192669026554e-05,
+        0.011315342038869858,
+        2.670786125236191e-05,
+        0.004443369805812836,
+        2.3660391889279708e-05,
+        0.0016342771705240011,
+        1.367008962915861e-06,
+        0.005946934688836336,
+        0.0015865473542362452,
+        3.170360650983639e-05,
+        0.014524239115417004,
+        0.05963717773556709,
+        0.0038438166957348585,
+        7.026124512776732e-05,
+        0.0073000770062208176,
+        1.0626269613567274e-05,
+        0.005931776948273182,
+        0.00042868699529208243
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        0,
+        4,
+        3,
+        2,
+        27,
+        14,
+        26,
+        17,
+        30,
+        5,
+        23,
+        32,
+        6,
+        19,
+        28
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.28390806913375854,
+        0.2709782123565674,
+        0.19061706960201263,
+        0.10527893900871277,
+        0.05963717773556709,
+        0.018569830805063248,
+        0.014524239115417004,
+        0.011315342038869858,
+        0.0073000770062208176,
+        0.006432951427996159,
+        0.005946934688836336,
+        0.005931776948273182,
+        0.004468126222491264,
+        0.004443369805812836,
+        0.0038438166957348585
+      ]
+    }
+  },
+  "historical_context": {
+    "all_rbf": {
+      "num_other_runs_same_dataset": 1
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\first_split_data_preview.png",
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\accuracy_by_split.png",
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\mean_alphas_all_rbf.png",
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\alpha_heatmap_all_rbf.png",
+      "experiments\\classification\\results\\a9dc72e3-507b-4dd1-9c59-dbcd2391d5d4_test14_uci_ionosphere\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

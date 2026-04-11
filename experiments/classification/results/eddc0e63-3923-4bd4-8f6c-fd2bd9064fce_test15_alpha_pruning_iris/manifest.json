@@ -1,0 +1,256 @@
+{
+  "run_uuid": "eddc0e63-3923-4bd4-8f6c-fd2bd9064fce",
+  "created_utc": "2026-03-19T21:29:58.258281+00:00",
+  "config": {
+    "experiment_name": "test15_alpha_pruning_two_pass",
+    "dataset_name": "iris",
+    "architectures": [
+      "all_rbf",
+      "half_rbf_half_linear",
+      "all_linear"
+    ],
+    "alpha_source": "all_rbf",
+    "alpha_keep_mass": 0.95,
+    "min_features_keep": 1,
+    "max_features_keep": null,
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "full_vector_rbf_gamma": 0.5,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 150,
+      "n_features": 2
+    },
+    "class_balance": {
+      "positive_count": 50,
+      "negative_count": 100
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\iris.csv",
+    "numeric_feature_count": 2,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 120,
+      "test_size": 30,
+      "dimension_before": 2,
+      "dimension_after": 2,
+      "selected_feature_indices": [
+        0,
+        1
+      ],
+      "selected_feature_mass": 1.0,
+      "selected_feature_threshold_alpha": 0.17380630309718315,
+      "alpha_source": "all_rbf",
+      "pass1": {
+        "architectures": {
+          "all_rbf": {
+            "label": "Archi + All RBF",
+            "accuracy": 0.8999999761581421,
+            "final_alignment_loss": -0.6262726783752441,
+            "alphas": [
+              0.8261927366256714,
+              0.1738061010837555
+            ]
+          },
+          "half_rbf_half_linear": {
+            "label": "Archi + Half RBF/Half Linear",
+            "accuracy": 0.9333333373069763,
+            "final_alignment_loss": -0.6785049438476562,
+            "alphas": [
+              0.859941840171814,
+              0.1400577276945114
+            ]
+          },
+          "all_linear": {
+            "label": "Archi + All Linear",
+            "accuracy": 0.8666666746139526,
+            "final_alignment_loss": -0.6497547030448914,
+            "alphas": [
+              0.2383558303117752,
+              0.7616435289382935
+            ]
+          }
+        },
+        "full_vector_rbf_accuracy": 1.0,
+        "full_vector_linear_accuracy": 0.8666666746139526
+      },
+      "pass2": {
+        "architectures": {
+          "all_rbf": {
+            "label": "Archi + All RBF",
+            "accuracy": 0.9333333373069763,
+            "final_alignment_loss": -0.5500485301017761,
+            "alphas": [
+              0.6013852953910828,
+              0.39861419796943665
+            ]
+          },
+          "half_rbf_half_linear": {
+            "label": "Archi + Half RBF/Half Linear",
+            "accuracy": 0.9333333373069763,
+            "final_alignment_loss": -0.6522223353385925,
+            "alphas": [
+              0.8933684825897217,
+              0.10663114488124847
+            ]
+          },
+          "all_linear": {
+            "label": "Archi + All Linear",
+            "accuracy": 0.8666666746139526,
+            "final_alignment_loss": -0.6497545838356018,
+            "alphas": [
+              0.9271349906921387,
+              0.07286474853754044
+            ]
+          }
+        },
+        "full_vector_rbf_accuracy": 1.0,
+        "full_vector_linear_accuracy": 0.8666666746139526
+      }
+    }
+  ],
+  "summary": {
+    "models": {
+      "archi_all_rbf": {
+        "label": "Archi + All RBF",
+        "pass1_mean_accuracy": 0.8999999761581421,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 89.99999761581421,
+        "pass1_accuracy_percent_1dp": 90.0,
+        "pass2_mean_accuracy": 0.9333333373069763,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 93.33333373069763,
+        "pass2_accuracy_percent_1dp": 93.3,
+        "delta_mean_accuracy": 0.03333336114883423,
+        "delta_percent_points": 3.333336114883423,
+        "pass1_mean_alignment_loss": -0.6262726783752441,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.5500485301017761,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "archi_half_rbf_half_linear": {
+        "label": "Archi + Half RBF/Half Linear",
+        "pass1_mean_accuracy": 0.9333333373069763,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 93.33333373069763,
+        "pass1_accuracy_percent_1dp": 93.3,
+        "pass2_mean_accuracy": 0.9333333373069763,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 93.33333373069763,
+        "pass2_accuracy_percent_1dp": 93.3,
+        "delta_mean_accuracy": 0.0,
+        "delta_percent_points": 0.0,
+        "pass1_mean_alignment_loss": -0.6785049438476562,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.6522223353385925,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "archi_all_linear": {
+        "label": "Archi + All Linear",
+        "pass1_mean_accuracy": 0.8666666746139526,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 86.66666746139526,
+        "pass1_accuracy_percent_1dp": 86.7,
+        "pass2_mean_accuracy": 0.8666666746139526,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 86.66666746139526,
+        "pass2_accuracy_percent_1dp": 86.7,
+        "delta_mean_accuracy": 0.0,
+        "delta_percent_points": 0.0,
+        "pass1_mean_alignment_loss": -0.6497547030448914,
+        "pass1_std_alignment_loss": 0.0,
+        "pass2_mean_alignment_loss": -0.6497545838356018,
+        "pass2_std_alignment_loss": 0.0
+      },
+      "full_vector_rbf": {
+        "label": "Full-Vector RBF",
+        "pass1_mean_accuracy": 1.0,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 100.0,
+        "pass1_accuracy_percent_1dp": 100.0,
+        "pass2_mean_accuracy": 1.0,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 100.0,
+        "pass2_accuracy_percent_1dp": 100.0,
+        "delta_mean_accuracy": 0.0,
+        "delta_percent_points": 0.0
+      },
+      "full_vector_linear": {
+        "label": "Full-Vector Linear",
+        "pass1_mean_accuracy": 0.8666666746139526,
+        "pass1_std_accuracy": 0.0,
+        "pass1_accuracy_percent_raw": 86.66666746139526,
+        "pass1_accuracy_percent_1dp": 86.7,
+        "pass2_mean_accuracy": 0.8666666746139526,
+        "pass2_std_accuracy": 0.0,
+        "pass2_accuracy_percent_raw": 86.66666746139526,
+        "pass2_accuracy_percent_1dp": 86.7,
+        "delta_mean_accuracy": 0.0,
+        "delta_percent_points": 0.0
+      }
+    },
+    "alpha_source": {
+      "mode": "all_rbf",
+      "alpha_keep_mass": 0.95,
+      "mean_source_alpha": [
+        0.8261936969028169,
+        0.17380630309718315
+      ],
+      "top_feature_indices_by_mean_source_alpha": [
+        0,
+        1
+      ],
+      "top_feature_alphas_by_mean_source_alpha": [
+        0.8261936969028169,
+        0.17380630309718315
+      ],
+      "keep_frequency_by_feature": [
+        1.0,
+        1.0
+      ]
+    },
+    "feature_pruning": {
+      "mean_selected_feature_count": 2.0,
+      "std_selected_feature_count": 0.0,
+      "mean_selected_feature_ratio": 1.0,
+      "mean_selected_feature_mass": 1.0,
+      "mean_threshold_alpha": 0.17380630309718315
+    },
+    "paper_reference_accuracy_percent": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 96.7,
+      "Algorithm1_SMKL": 100.0
+    },
+    "notes": {
+      "paper_models_after_pruning": "Paper models (EasyMKL/AverageMKL/CKA/SMKL) are reported as reference values only. They are not retrained inside test15 because their training implementations are not in this repo."
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\first_split_data_preview.png",
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\accuracy_before_after_by_model.png",
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\accuracy_delta_by_model.png",
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\source_alpha_profile.png",
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\feature_keep_frequency.png",
+      "experiments\\classification\\results\\eddc0e63-3923-4bd4-8f6c-fd2bd9064fce_test15_alpha_pruning_iris\\selected_feature_count_by_split.png"
+    ]
+  }
+}

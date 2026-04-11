@@ -1,0 +1,188 @@
+{
+  "run_uuid": "3649b945-b067-44e9-92ed-cffd977b97ac",
+  "created_utc": "2026-03-19T11:55:05.580458+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "parkinsons",
+    "architectures": [
+      "half_rbf_half_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 195,
+      "n_features": 22
+    },
+    "class_balance": {
+      "positive_count": 147,
+      "negative_count": 48
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/parkinsons/parkinsons.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\parkinsons.csv",
+    "numeric_feature_count": 22,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 156,
+      "test_size": 39,
+      "architectures": {
+        "half_rbf_half_linear": {
+          "label": "Archi + Half RBF/Half Linear",
+          "accuracy": 0.7948718070983887,
+          "final_alignment_loss": -0.38034382462501526,
+          "alphas": [
+            0.1722605973482132,
+            0.02444518730044365,
+            0.30984190106391907,
+            0.010168498381972313,
+            0.0002103896695189178,
+            0.0047569614835083485,
+            0.0023853331804275513,
+            0.023521095514297485,
+            0.012747266329824924,
+            0.039238832890987396,
+            0.018413586542010307,
+            0.020943302661180496,
+            8.315533705172129e-06,
+            1.0340535538944096e-08,
+            1.3203666640038136e-06,
+            0.008499225601553917,
+            8.618653373559937e-05,
+            0.013656627386808395,
+            0.23047210276126862,
+            0.06808914244174957,
+            0.03916072100400925,
+            0.0010934325400739908
+          ],
+          "top_feature_indices": [
+            2,
+            18,
+            0,
+            19,
+            9,
+            20,
+            1,
+            7,
+            11,
+            10
+          ],
+          "top_feature_alphas": [
+            0.30984190106391907,
+            0.23047210276126862,
+            0.1722605973482132,
+            0.06808914244174957,
+            0.039238832890987396,
+            0.03916072100400925,
+            0.02444518730044365,
+            0.023521095514297485,
+            0.020943302661180496,
+            0.018413586542010307
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "half_rbf_half_linear": {
+      "label": "Archi + Half RBF/Half Linear",
+      "mean_accuracy": 0.7948718070983887,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.7948718070983887,
+      "worst_split_accuracy": 0.7948718070983887,
+      "table_accuracy_percent_raw": 79.48718070983887,
+      "table_accuracy_percent_1dp": 79.5,
+      "mean_alphas": [
+        0.1722605973482132,
+        0.02444518730044365,
+        0.30984190106391907,
+        0.010168498381972313,
+        0.0002103896695189178,
+        0.0047569614835083485,
+        0.0023853331804275513,
+        0.023521095514297485,
+        0.012747266329824924,
+        0.039238832890987396,
+        0.018413586542010307,
+        0.020943302661180496,
+        8.315533705172129e-06,
+        1.0340535538944096e-08,
+        1.3203666640038136e-06,
+        0.008499225601553917,
+        8.618653373559937e-05,
+        0.013656627386808395,
+        0.23047210276126862,
+        0.06808914244174957,
+        0.03916072100400925,
+        0.0010934325400739908
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        2,
+        18,
+        0,
+        19,
+        9,
+        20,
+        1,
+        7,
+        11,
+        10,
+        17,
+        8,
+        3,
+        15,
+        5
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.30984190106391907,
+        0.23047210276126862,
+        0.1722605973482132,
+        0.06808914244174957,
+        0.039238832890987396,
+        0.03916072100400925,
+        0.02444518730044365,
+        0.023521095514297485,
+        0.020943302661180496,
+        0.018413586542010307,
+        0.013656627386808395,
+        0.012747266329824924,
+        0.010168498381972313,
+        0.008499225601553917,
+        0.0047569614835083485
+      ]
+    }
+  },
+  "historical_context": {
+    "half_rbf_half_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\first_split_data_preview.png",
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\accuracy_by_split.png",
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\mean_alphas_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\alpha_heatmap_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\3649b945-b067-44e9-92ed-cffd977b97ac_test14_uci_parkinsons\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

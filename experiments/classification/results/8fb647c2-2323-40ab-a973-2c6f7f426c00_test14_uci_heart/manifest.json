@@ -1,0 +1,166 @@
+{
+  "run_uuid": "8fb647c2-2323-40ab-a973-2c6f7f426c00",
+  "created_utc": "2026-03-19T11:03:00.536906+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "heart",
+    "architectures": [
+      "all_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 303,
+      "n_features": 13
+    },
+    "class_balance": {
+      "positive_count": 139,
+      "negative_count": 164
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\heart.csv",
+    "numeric_feature_count": 13,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 242,
+      "test_size": 61,
+      "architectures": {
+        "all_linear": {
+          "label": "Archi + All Linear",
+          "accuracy": 0.8524590134620667,
+          "final_alignment_loss": -0.40867727994918823,
+          "alphas": [
+            0.0007159056258387864,
+            0.0080615459010005,
+            0.2567088305950165,
+            0.005468674935400486,
+            0.00603117048740387,
+            0.00035483468673191965,
+            0.0231056809425354,
+            0.04279447719454765,
+            0.04771778732538223,
+            0.034746065735816956,
+            0.00675797276198864,
+            0.5215365290641785,
+            0.046000272035598755
+          ],
+          "top_feature_indices": [
+            11,
+            2,
+            8,
+            12,
+            7,
+            9,
+            6,
+            1,
+            10,
+            4
+          ],
+          "top_feature_alphas": [
+            0.5215365290641785,
+            0.2567088305950165,
+            0.04771778732538223,
+            0.046000272035598755,
+            0.04279447719454765,
+            0.034746065735816956,
+            0.0231056809425354,
+            0.0080615459010005,
+            0.00675797276198864,
+            0.00603117048740387
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_linear": {
+      "label": "Archi + All Linear",
+      "mean_accuracy": 0.8524590134620667,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.8524590134620667,
+      "worst_split_accuracy": 0.8524590134620667,
+      "table_accuracy_percent_raw": 85.24590134620667,
+      "table_accuracy_percent_1dp": 85.2,
+      "mean_alphas": [
+        0.0007159056258387864,
+        0.0080615459010005,
+        0.2567088305950165,
+        0.005468674935400486,
+        0.00603117048740387,
+        0.00035483468673191965,
+        0.0231056809425354,
+        0.04279447719454765,
+        0.04771778732538223,
+        0.034746065735816956,
+        0.00675797276198864,
+        0.5215365290641785,
+        0.046000272035598755
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        11,
+        2,
+        8,
+        12,
+        7,
+        9,
+        6,
+        1,
+        10,
+        4,
+        3,
+        0,
+        5
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.5215365290641785,
+        0.2567088305950165,
+        0.04771778732538223,
+        0.046000272035598755,
+        0.04279447719454765,
+        0.034746065735816956,
+        0.0231056809425354,
+        0.0080615459010005,
+        0.00675797276198864,
+        0.00603117048740387,
+        0.005468674935400486,
+        0.0007159056258387864,
+        0.00035483468673191965
+      ]
+    }
+  },
+  "historical_context": {
+    "all_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\first_split_data_preview.png",
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\accuracy_by_split.png",
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\mean_alphas_all_linear.png",
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\alpha_heatmap_all_linear.png",
+      "experiments\\classification\\results\\8fb647c2-2323-40ab-a973-2c6f7f426c00_test14_uci_heart\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

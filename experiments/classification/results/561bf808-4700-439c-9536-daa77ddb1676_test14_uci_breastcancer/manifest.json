@@ -1,0 +1,204 @@
+{
+  "run_uuid": "561bf808-4700-439c-9536-daa77ddb1676",
+  "created_utc": "2026-03-19T11:04:07.694329+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "breastcancer",
+    "architectures": [
+      "half_rbf_half_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 569,
+      "n_features": 30
+    },
+    "class_balance": {
+      "positive_count": 212,
+      "negative_count": 357
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\breastcancer.csv",
+    "numeric_feature_count": 30,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 455,
+      "test_size": 114,
+      "architectures": {
+        "half_rbf_half_linear": {
+          "label": "Archi + Half RBF/Half Linear",
+          "accuracy": 0.9298245906829834,
+          "final_alignment_loss": -0.743363618850708,
+          "alphas": [
+            0.02035992406308651,
+            0.08673324435949326,
+            0.038755930960178375,
+            0.028406230732798576,
+            0.000512700411491096,
+            4.580911263474263e-05,
+            0.06976006925106049,
+            0.22226150333881378,
+            0.0005920584662817419,
+            0.0004322999739088118,
+            0.025443149730563164,
+            0.0007384947966784239,
+            0.023689083755016327,
+            0.0028949114494025707,
+            0.0011325953528285027,
+            0.028863653540611267,
+            5.8654077150777084e-08,
+            7.280787485797191e-06,
+            8.772672117629554e-07,
+            1.2892870770997433e-08,
+            0.012484357692301273,
+            0.09986519068479538,
+            0.0001872433495009318,
+            0.00021056308469269425,
+            0.0021824866998940706,
+            0.010884346440434456,
+            0.044431112706661224,
+            0.10665136575698853,
+            0.052307870239019394,
+            0.12016561627388
+          ],
+          "top_feature_indices": [
+            7,
+            29,
+            27,
+            21,
+            1,
+            6,
+            28,
+            26,
+            2,
+            15
+          ],
+          "top_feature_alphas": [
+            0.22226150333881378,
+            0.12016561627388,
+            0.10665136575698853,
+            0.09986519068479538,
+            0.08673324435949326,
+            0.06976006925106049,
+            0.052307870239019394,
+            0.044431112706661224,
+            0.038755930960178375,
+            0.028863653540611267
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "half_rbf_half_linear": {
+      "label": "Archi + Half RBF/Half Linear",
+      "mean_accuracy": 0.9298245906829834,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.9298245906829834,
+      "worst_split_accuracy": 0.9298245906829834,
+      "table_accuracy_percent_raw": 92.98245906829834,
+      "table_accuracy_percent_1dp": 93.0,
+      "mean_alphas": [
+        0.02035992406308651,
+        0.08673324435949326,
+        0.038755930960178375,
+        0.028406230732798576,
+        0.000512700411491096,
+        4.580911263474263e-05,
+        0.06976006925106049,
+        0.22226150333881378,
+        0.0005920584662817419,
+        0.0004322999739088118,
+        0.025443149730563164,
+        0.0007384947966784239,
+        0.023689083755016327,
+        0.0028949114494025707,
+        0.0011325953528285027,
+        0.028863653540611267,
+        5.8654077150777084e-08,
+        7.280787485797191e-06,
+        8.772672117629554e-07,
+        1.2892870770997433e-08,
+        0.012484357692301273,
+        0.09986519068479538,
+        0.0001872433495009318,
+        0.00021056308469269425,
+        0.0021824866998940706,
+        0.010884346440434456,
+        0.044431112706661224,
+        0.10665136575698853,
+        0.052307870239019394,
+        0.12016561627388
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        7,
+        29,
+        27,
+        21,
+        1,
+        6,
+        28,
+        26,
+        2,
+        15,
+        3,
+        10,
+        12,
+        0,
+        20
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.22226150333881378,
+        0.12016561627388,
+        0.10665136575698853,
+        0.09986519068479538,
+        0.08673324435949326,
+        0.06976006925106049,
+        0.052307870239019394,
+        0.044431112706661224,
+        0.038755930960178375,
+        0.028863653540611267,
+        0.028406230732798576,
+        0.025443149730563164,
+        0.023689083755016327,
+        0.02035992406308651,
+        0.012484357692301273
+      ]
+    }
+  },
+  "historical_context": {
+    "half_rbf_half_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\first_split_data_preview.png",
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\accuracy_by_split.png",
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\mean_alphas_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\alpha_heatmap_half_rbf_half_linear.png",
+      "experiments\\classification\\results\\561bf808-4700-439c-9536-daa77ddb1676_test14_uci_breastcancer\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

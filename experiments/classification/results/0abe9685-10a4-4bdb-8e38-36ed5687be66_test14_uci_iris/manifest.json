@@ -1,0 +1,106 @@
+{
+  "run_uuid": "0abe9685-10a4-4bdb-8e38-36ed5687be66",
+  "created_utc": "2026-03-18T21:38:02.136290+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "iris",
+    "architectures": [
+      "all_rbf"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 150,
+      "n_features": 2
+    },
+    "class_balance": {
+      "positive_count": 50,
+      "negative_count": 100
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\iris.csv",
+    "numeric_feature_count": 2,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 120,
+      "test_size": 30,
+      "architectures": {
+        "all_rbf": {
+          "label": "Archi + All RBF",
+          "accuracy": 0.8999999761581421,
+          "final_alignment_loss": -0.5331802368164062,
+          "alphas": [
+            0.7532257437705994,
+            0.24677401781082153
+          ],
+          "top_feature_indices": [
+            0,
+            1
+          ],
+          "top_feature_alphas": [
+            0.7532257437705994,
+            0.24677401781082153
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_rbf": {
+      "label": "Archi + All RBF",
+      "mean_accuracy": 0.8999999761581421,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.8999999761581421,
+      "worst_split_accuracy": 0.8999999761581421,
+      "table_accuracy_percent_raw": 89.99999761581421,
+      "table_accuracy_percent_1dp": 90.0,
+      "mean_alphas": [
+        0.7532257437705994,
+        0.24677401781082153
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        0,
+        1
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.7532257437705994,
+        0.24677401781082153
+      ]
+    }
+  },
+  "historical_context": {
+    "all_rbf": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\first_split_data_preview.png",
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\accuracy_by_split.png",
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\mean_alphas_all_rbf.png",
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\alpha_heatmap_all_rbf.png",
+      "experiments\\classification\\results\\0abe9685-10a4-4bdb-8e38-36ed5687be66_test14_uci_iris\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}

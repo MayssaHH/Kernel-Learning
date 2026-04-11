@@ -1,0 +1,124 @@
+{
+  "run_uuid": "96ca6081-6ee3-4fbf-bf60-cff062ba4384",
+  "created_utc": "2026-03-19T11:01:30.967272+00:00",
+  "config": {
+    "experiment_name": "test14_external_benchmark_dataset_runner",
+    "paper_reference": "https://arxiv.org/html/2511.21890",
+    "paper_repo_reference_loader": "_tmp_paper_repo/data/get_data.jl",
+    "dataset_name": "mammographic",
+    "architectures": [
+      "all_linear"
+    ],
+    "protocol": "paper_strict",
+    "n_splits": 1,
+    "effective_n_splits": 1,
+    "test_size": 0.2,
+    "random_seed": 42,
+    "paper_seed": 123,
+    "frac": 1.0,
+    "train_ratio": 0.8,
+    "force_download": false,
+    "data_cache_dir": "experiments/classification/_paper_data_cache",
+    "epochs": 500,
+    "lr": 0.01,
+    "lambda_ridge": 0.0001,
+    "save_results": true,
+    "show_plots": false,
+    "show_plots_at_end": false,
+    "results_root": "experiments/classification/results",
+    "dataset_shape": {
+      "n_samples": 961,
+      "n_features": 5
+    },
+    "class_balance": {
+      "positive_count": 445,
+      "negative_count": 516
+    },
+    "data_source_url": "https://archive.ics.uci.edu/ml/machine-learning-databases/mammographic-masses/mammographic_masses.data",
+    "data_local_path": "experiments\\classification\\_paper_data_cache\\mammographic.csv",
+    "numeric_feature_count": 5,
+    "categorical_feature_count": 0
+  },
+  "split_results": [
+    {
+      "split": 1,
+      "train_size": 768,
+      "test_size": 193,
+      "architectures": {
+        "all_linear": {
+          "label": "Archi + All Linear",
+          "accuracy": 0.8341968655586243,
+          "final_alignment_loss": -0.3885144293308258,
+          "alphas": [
+            0.3175455629825592,
+            0.029454408213496208,
+            0.006518417038023472,
+            0.646429181098938,
+            5.2289025916252285e-05
+          ],
+          "top_feature_indices": [
+            3,
+            0,
+            1,
+            2,
+            4
+          ],
+          "top_feature_alphas": [
+            0.646429181098938,
+            0.3175455629825592,
+            0.029454408213496208,
+            0.006518417038023472,
+            5.2289025916252285e-05
+          ]
+        }
+      }
+    }
+  ],
+  "summary": {
+    "all_linear": {
+      "label": "Archi + All Linear",
+      "mean_accuracy": 0.8341968655586243,
+      "std_accuracy": 0.0,
+      "best_split_accuracy": 0.8341968655586243,
+      "worst_split_accuracy": 0.8341968655586243,
+      "table_accuracy_percent_raw": 83.41968655586243,
+      "table_accuracy_percent_1dp": 83.4,
+      "mean_alphas": [
+        0.3175455629825592,
+        0.029454408213496208,
+        0.006518417038023472,
+        0.646429181098938,
+        5.2289025916252285e-05
+      ],
+      "top_feature_indices_by_mean_alpha": [
+        3,
+        0,
+        1,
+        2,
+        4
+      ],
+      "top_feature_alphas_by_mean_alpha": [
+        0.646429181098938,
+        0.3175455629825592,
+        0.029454408213496208,
+        0.006518417038023472,
+        5.2289025916252285e-05
+      ]
+    }
+  },
+  "historical_context": {
+    "all_linear": {
+      "num_other_runs_same_dataset": 0
+    }
+  },
+  "artifacts": {
+    "plots": [
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\first_split_data_preview.png",
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\accuracy_by_split.png",
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\accuracy_boxplot.png",
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\mean_alphas_all_linear.png",
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\alpha_heatmap_all_linear.png",
+      "experiments\\classification\\results\\96ca6081-6ee3-4fbf-bf60-cff062ba4384_test14_uci_mammographic\\accuracy_histogram_vs_other_runs.png"
+    ]
+  }
+}
