@@ -39,7 +39,7 @@ from kernel_learning.methods.kernel_ridge_classifier import KernelRidgeClassifie
 
 from datasets import load_uci_split, to_tensors
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")  # small n — CPU is fine, keeps GPU free for benchmark
 FIGURES_DIR = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
 

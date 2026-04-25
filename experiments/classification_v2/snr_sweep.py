@@ -42,7 +42,7 @@ from baselines import (
     linear_kernel_global,
 )
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")  # professor data is small — CPU avoids GPU contention
 FIGURES_DIR = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
 

@@ -35,7 +35,7 @@ from kernel_learning.methods.kernel_ridge_classifier import KernelRidgeClassifie
 
 from baselines import KRR_Global, make_svm_rbf, make_svm_linear, rbf_kernel_global
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+DEVICE = torch.device("cpu")  # small n — CPU is faster due to less overhead
 FIGURES_DIR = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
 
