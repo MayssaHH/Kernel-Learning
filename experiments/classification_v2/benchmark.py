@@ -42,8 +42,16 @@ from baselines import (
 )
 from datasets import PAPER_DATASETS, load_uci_split, to_tensors
 
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"[benchmark] Using device: {DEVICE}")
+_GPU = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+_CPU = torch.device("cpu")
+print(f"[benchmark] GPU available: {torch.cuda.is_available()}")
+
+# Datasets whose n×p kernel stack would risk OOM on 8 GB VRAM are trained on CPU.
+# Threshold: n_train > 1500 (kernel stack ≈ p × n² × 4 bytes, e.g. spambase ≈ 3 GB).
+_LARGE_DATASETS = {"spambase"}
+
+def _device_for(dataset_name: str) -> torch.device:
+    return _CPU if dataset_name in _LARGE_DATASETS else _GPU
 
 # ── Paper MKL reference numbers (Bertsimas et al., TMLR 2025, Table 2) ───────
 
@@ -97,8 +105,10 @@ def train_and_eval_kernel_network(
     epochs: int = 800,
     lr: float = 3e-3,
     lambda_ridge: float = 1e-4,
-    device: torch.device = DEVICE,
+    device: torch.device = None,
 ) -> Dict:
+    if device is None:
+        device = _GPU
     X_tr = X_tr.to(device)
     y_tr = y_tr.to(device)
     X_te = X_te.to(device)
@@ -160,6 +170,9 @@ def run_dataset(
     print(f"  {dataset_name.upper()}")
     print(f"{'─'*66}")
 
+    device = _device_for(dataset_name)
+    print(f"  device: {device}")
+
     X_tr_np, y_tr_np, X_te_np, y_te_np, info = load_uci_split(dataset_name)
     X_tr_t, y_tr_t, X_te_t, y_te_t = to_tensors(X_tr_np, y_tr_np, X_te_np, y_te_np)
     p = X_tr_np.shape[1]
@@ -173,6 +186,7 @@ def run_dataset(
         r = train_and_eval_kernel_network(
             arch, X_tr_t, y_tr_t, X_te_t, y_te_t,
             epochs=epochs, lr=lr, lambda_ridge=lambda_ridge,
+            device=device,
         )
         results[label] = r
         print(f"  → {label:26s}  {r['accuracy_pct']:6.2f}%  loss={r['final_loss']:.4f}  {r['train_time_s']:.1f}s")

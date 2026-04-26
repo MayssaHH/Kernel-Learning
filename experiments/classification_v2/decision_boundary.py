@@ -229,11 +229,6 @@ def run(save_path: str = None):
         X, y = gen_fn()
         plot_dataset_boundaries(ds_name, X, y, axes[row_idx] if n_rows > 1 else axes)
 
-    # Column headers
-    col_titles = ["Ours+RBF", "Ours+Mixed", "SVM-RBF", "SVM-Linear", "KRR-RBF"]
-    for ax, ct in zip(axes[0] if n_rows > 1 else axes, col_titles):
-        ax.set_title(f"─ {ct} ─", fontsize=9, color="#555")
-
     fig.suptitle(
         "Decision Boundary Comparison\n"
         "Our Per-Feature Learnable Kernel vs. Global Kernel Methods",

@@ -114,23 +114,16 @@ class KernelNetwork(nn.Module):
         n, p = X.shape
         assert p == self.p, f"Expected {self.p} features, got {p}"
         
-        # Compute all sub-kernel matrices (vectorized)
-        K_list = [] # list where each element is (n,n) kernel matrix for a feature, and the list length is p
-        for k, sub_kernel in enumerate(self.sub_kernels):
-            K_k = sub_kernel(X[:, k])  # (n, n), NOTE: here X[:, k] is the k-th feature column, shape (n,)
-            K_list.append(K_k)
-        
-        K_stack = torch.stack(K_list, dim=0)  # (p, n, n), like we were discussing before list of p (n,n) matrices becomes a tensor of shape (p,n,n) because of stacking along a new dimension 0, as an example if I stacked along dim=1, the shape would be (n,p,n) which is not what we want.
-        
-        # Get constrained alphas (after applying constraints like square, exp, etc. and normalization if any)
+        # Get constrained alphas first so we can accumulate inline
         alphas = self._get_alphas()  # (p,)
-        
-        # Weighted sum (vectorized using einsum) 
-        # NOTE: this is just a fancy way(for vectorization efficiency) of doing:
 
-        # K_{i,j} = \sum_{p=1}^{P} \alpha_p K_{i,j}^{(p)}
-
-        K = torch.einsum('p,pij->ij', alphas, K_stack)  # (n, n), this will do sum over p dimension, multiplying each (n,n) matrix by its corresponding alpha weight. #NOTE: check the einsum documentation: https://pytorch.org/docs/stable/generated/torch.einsum.html
+        # Accumulate weighted sub-kernels one feature at a time.
+        # This avoids building a (p, n, n) stack in memory — critical for
+        # large n where stack would be O(p * n^2) bytes (e.g. 3 GB for spambase).
+        K = torch.zeros(n, n, device=X.device, dtype=X.dtype)
+        for k, sub_kernel in enumerate(self.sub_kernels):
+            K_k = sub_kernel(X[:, k])  # (n, n)
+            K = K + alphas[k] * K_k
         
         # Check symmetry before forcing it(for debugging/monitoring like we discussed above)
         asymmetry = torch.norm(K - K.T, p='fro') / (torch.norm(K, p='fro') + 1e-8)
