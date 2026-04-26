@@ -43,15 +43,20 @@ from baselines import (
 from datasets import PAPER_DATASETS, load_uci_split, to_tensors
 
 _GPU = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-_CPU = torch.device("cpu")
 print(f"[benchmark] GPU available: {torch.cuda.is_available()}")
 
-# Datasets whose n×p kernel stack would risk OOM on 8 GB VRAM are trained on CPU.
-# Threshold: n_train > 1500 (kernel stack ≈ p × n² × 4 bytes, e.g. spambase ≈ 3 GB).
-_LARGE_DATASETS = {"spambase"}
+# With the iterative kernel accumulation (O(n²) peak memory per forward),
+# all datasets run on GPU safely. Larger datasets need fewer epochs because
+# they carry more gradient signal per update and converge faster.
+_EPOCHS_OVERRIDE = {
+    "spambase": 500,   # n=3680 — converges well before 800
+}
 
 def _device_for(dataset_name: str) -> torch.device:
-    return _CPU if dataset_name in _LARGE_DATASETS else _GPU
+    return _GPU
+
+def _epochs_for(dataset_name: str, default: int) -> int:
+    return _EPOCHS_OVERRIDE.get(dataset_name, default)
 
 # ── Paper MKL reference numbers (Bertsimas et al., TMLR 2025, Table 2) ───────
 
@@ -171,7 +176,8 @@ def run_dataset(
     print(f"{'─'*66}")
 
     device = _device_for(dataset_name)
-    print(f"  device: {device}")
+    eff_epochs = _epochs_for(dataset_name, epochs)
+    print(f"  device: {device}  epochs: {eff_epochs}")
 
     X_tr_np, y_tr_np, X_te_np, y_te_np, info = load_uci_split(dataset_name)
     X_tr_t, y_tr_t, X_te_t, y_te_t = to_tensors(X_tr_np, y_tr_np, X_te_np, y_te_np)
@@ -185,7 +191,7 @@ def run_dataset(
         print(f"\n  [Training] {label} ...")
         r = train_and_eval_kernel_network(
             arch, X_tr_t, y_tr_t, X_te_t, y_te_t,
-            epochs=epochs, lr=lr, lambda_ridge=lambda_ridge,
+            epochs=eff_epochs, lr=lr, lambda_ridge=lambda_ridge,
             device=device,
         )
         results[label] = r
