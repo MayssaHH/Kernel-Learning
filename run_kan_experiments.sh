@@ -58,9 +58,10 @@ log "  Feature importance done."
 wait $CONV_PID
 log "  Convergence done."
 
-# ── Phase 4: Combined figures (needs both benchmark JSONs) ────────────────────
-log "=== Phase 4: Combined Figures ==="
+# ── Phase 4: Combined + Fair comparison figures ───────────────────────────────
+log "=== Phase 4: Combined + Fair Comparison Figures ==="
 "$PYTHON" -u combined_figures.py 2>&1 | tee "$RESULTS/combined_figures.log"
+"$PYTHON" -u fair_comparison_figures.py 2>&1 | tee "$RESULTS/fair_comparison_figures.log"
 log "Phase 4 complete."
 
 # ── Summary ───────────────────────────────────────────────────────────────────
