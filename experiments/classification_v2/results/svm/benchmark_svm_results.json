@@ -1,0 +1,442 @@
+{
+  "breastcancer": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 95.614,
+      "train_time_s": 12.85
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 96.491,
+      "train_time_s": 6.41
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 97.368,
+      "train_time_s": 8.68
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 92.105,
+      "train_time_s": 452.56
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 93.86,
+      "train_time_s": 0.004
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 94.737,
+      "train_time_s": 0.005
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 95.614,
+      "train_time_s": 0.003
+    },
+    "_paper_baselines": {
+      "EasyMKL": 93.0,
+      "AverageMKL": 92.1,
+      "SMKL": 98.3
+    },
+    "_dataset_info": {
+      "dataset": "breastcancer",
+      "n_samples": 569,
+      "n_features": 30,
+      "train_size": 455,
+      "test_size": 114,
+      "positive_count": 212,
+      "negative_count": 357
+    }
+  },
+  "ionosphere": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 88.732,
+      "train_time_s": 10.45
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 87.324,
+      "train_time_s": 5.92
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 87.324,
+      "train_time_s": 8.12
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 90.141,
+      "train_time_s": 597.41
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 94.366,
+      "train_time_s": 0.003
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 90.141,
+      "train_time_s": 0.004
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 91.549,
+      "train_time_s": 0.002
+    },
+    "_paper_baselines": {
+      "EasyMKL": 73.2,
+      "AverageMKL": 74.6,
+      "SMKL": 93.0
+    },
+    "_dataset_info": {
+      "dataset": "ionosphere",
+      "n_samples": 351,
+      "n_features": 34,
+      "train_size": 280,
+      "test_size": 71,
+      "positive_count": 225,
+      "negative_count": 126
+    }
+  },
+  "spambase": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 93.051,
+      "train_time_s": 205.29
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 93.051,
+      "train_time_s": 93.86
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 92.4,
+      "train_time_s": 152.02
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 93.16,
+      "train_time_s": 579.29
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 94.463,
+      "train_time_s": 0.172
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 93.594,
+      "train_time_s": 0.348
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 94.571,
+      "train_time_s": 0.119
+    },
+    "_paper_baselines": {
+      "EasyMKL": 90.4,
+      "AverageMKL": 87.6,
+      "SMKL": 90.9
+    },
+    "_dataset_info": {
+      "dataset": "spambase",
+      "n_samples": 4601,
+      "n_features": 57,
+      "train_size": 3680,
+      "test_size": 921,
+      "positive_count": 1813,
+      "negative_count": 2788
+    }
+  },
+  "banknote": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 85.455,
+      "train_time_s": 3.42
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 88.364,
+      "train_time_s": 2.64
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 85.455,
+      "train_time_s": 2.92
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 65.455,
+      "train_time_s": 7.45
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.005
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.007
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.004
+    },
+    "_paper_baselines": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "banknote",
+      "n_samples": 1372,
+      "n_features": 4,
+      "train_size": 1097,
+      "test_size": 275,
+      "positive_count": 610,
+      "negative_count": 762
+    }
+  },
+  "haberman": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 79.032,
+      "train_time_s": 3.05
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 2.53
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 2.82
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 10.56
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 0.004
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 0.003
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 87.097,
+      "train_time_s": 0.004
+    },
+    "_paper_baselines": {
+      "EasyMKL": 61.3,
+      "AverageMKL": 62.9,
+      "SMKL": 67.7
+    },
+    "_dataset_info": {
+      "dataset": "haberman",
+      "n_samples": 306,
+      "n_features": 3,
+      "train_size": 244,
+      "test_size": 62,
+      "positive_count": 225,
+      "negative_count": 81
+    }
+  },
+  "mammographic": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 83.42,
+      "train_time_s": 3.43
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 86.528,
+      "train_time_s": 2.87
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 83.42,
+      "train_time_s": 3.43
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 81.865,
+      "train_time_s": 12.84
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 88.083,
+      "train_time_s": 0.026
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 86.528,
+      "train_time_s": 0.011
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 87.047,
+      "train_time_s": 0.015
+    },
+    "_paper_baselines": {
+      "EasyMKL": 80.8,
+      "AverageMKL": 79.3,
+      "SMKL": 84.5
+    },
+    "_dataset_info": {
+      "dataset": "mammographic",
+      "n_samples": 961,
+      "n_features": 5,
+      "train_size": 768,
+      "test_size": 193,
+      "positive_count": 445,
+      "negative_count": 516
+    }
+  },
+  "parkinsons": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 76.923,
+      "train_time_s": 7.67
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 79.487,
+      "train_time_s": 4.45
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 82.051,
+      "train_time_s": 6.08
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 89.744,
+      "train_time_s": 241.31
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 94.872,
+      "train_time_s": 0.002
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 82.051,
+      "train_time_s": 0.002
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 87.179,
+      "train_time_s": 0.002
+    },
+    "_paper_baselines": {
+      "EasyMKL": 82.1,
+      "AverageMKL": 82.1,
+      "SMKL": 89.7
+    },
+    "_dataset_info": {
+      "dataset": "parkinsons",
+      "n_samples": 195,
+      "n_features": 22,
+      "train_size": 156,
+      "test_size": 39,
+      "positive_count": 147,
+      "negative_count": 48
+    }
+  },
+  "wine": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 5.48
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 3.51
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 4.51
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 93.46
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.002
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.002
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.002
+    },
+    "_paper_baselines": {
+      "EasyMKL": 97.2,
+      "AverageMKL": 97.2,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "wine",
+      "n_samples": 178,
+      "n_features": 13,
+      "train_size": 142,
+      "test_size": 36,
+      "positive_count": 59,
+      "negative_count": 119
+    }
+  },
+  "iris": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 3.1
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 2.75
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 3.03
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 14.52
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.002
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "_paper_baselines": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "iris",
+      "n_samples": 150,
+      "n_features": 4,
+      "train_size": 120,
+      "test_size": 30,
+      "positive_count": 50,
+      "negative_count": 100
+    }
+  },
+  "heart": {
+    "KN+RBF+SVM": {
+      "accuracy_pct": 80.328,
+      "train_time_s": 5.32
+    },
+    "KN+Linear+SVM": {
+      "accuracy_pct": 81.967,
+      "train_time_s": 3.58
+    },
+    "KN+Mixed+SVM": {
+      "accuracy_pct": 80.328,
+      "train_time_s": 4.56
+    },
+    "KAN+SVM": {
+      "accuracy_pct": 73.77,
+      "train_time_s": 88.85
+    },
+    "SVM-RBF": {
+      "accuracy_pct": 83.607,
+      "train_time_s": 0.004
+    },
+    "SVM-Linear": {
+      "accuracy_pct": 83.607,
+      "train_time_s": 0.003
+    },
+    "SVM-Poly3": {
+      "accuracy_pct": 83.607,
+      "train_time_s": 0.002
+    },
+    "_paper_baselines": {
+      "EasyMKL": 85.2,
+      "AverageMKL": 85.2,
+      "SMKL": 93.4
+    },
+    "_dataset_info": {
+      "dataset": "heart",
+      "n_samples": 303,
+      "n_features": 13,
+      "train_size": 242,
+      "test_size": 61,
+      "positive_count": 139,
+      "negative_count": 164
+    }
+  }
+}
