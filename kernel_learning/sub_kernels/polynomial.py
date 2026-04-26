@@ -13,7 +13,8 @@ class PolynomialSubKernel(BaseSubKernel):
         self.c = c
         self.degree = degree
     
-    def forward(self, x_col: torch.Tensor) -> torch.Tensor:
-        # Vectorized: outer product raised to power
-        K = ( torch.outer(x_col, x_col) + self.c) ** self.degree
-        return K
+    def forward(self, x_col: torch.Tensor,
+                y_col: torch.Tensor = None) -> torch.Tensor:
+        if y_col is None:
+            y_col = x_col
+        return (torch.outer(x_col, y_col) + self.c) ** self.degree
