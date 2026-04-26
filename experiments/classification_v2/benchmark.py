@@ -248,6 +248,8 @@ def run_all(
     all_results = {}
     for ds in datasets:
         all_results[ds] = run_dataset(ds, epochs=epochs, lr=lr, lambda_ridge=lambda_ridge)
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()  # prevent fragmentation between datasets
 
     def _serialise(obj):
         if isinstance(obj, dict):
