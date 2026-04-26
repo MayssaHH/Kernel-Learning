@@ -100,42 +100,43 @@ class KernelNetwork(nn.Module):
         
         return alphas
     
-    def forward(self, X: torch.Tensor) -> torch.Tensor:
+    def forward(self, X: torch.Tensor,
+                Y: torch.Tensor = None) -> torch.Tensor:
         """
-        Compute kernel matrix K from input data X.
-        
-        Args:
-            X: Input data of shape (n, p) where n is number of samples,
-               p is number of features
-               
-        Returns:
-            K: (Guaranteed) Symmetric kernel matrix of shape (n, n)
+        Compute kernel matrix.
+
+        Self-kernel  (Y=None): K[i,j] = Σ_k α_k · K_k(X[i,k], X[j,k]),  shape (n, n)
+        Cross-kernel (Y given): K[i,j] = Σ_k α_k · K_k(X[i,k], Y[j,k]), shape (n, m)
         """
         n, p = X.shape
         assert p == self.p, f"Expected {self.p} features, got {p}"
-        
-        # Get constrained alphas first so we can accumulate inline
+        cross_mode = Y is not None
+        if cross_mode:
+            assert Y.shape[1] == p
+            m = Y.shape[0]
+        else:
+            m = n
+
         alphas = self._get_alphas()  # (p,)
 
-        # Accumulate weighted sub-kernels one feature at a time.
-        # This avoids building a (p, n, n) stack in memory — critical for
-        # large n where stack would be O(p * n^2) bytes (e.g. 3 GB for spambase).
-        K = torch.zeros(n, n, device=X.device, dtype=X.dtype)
+        # Accumulate weighted sub-kernels one feature at a time (O(n*m) peak memory).
+        out_device = X.device
+        K = torch.zeros(n, m, device=out_device, dtype=X.dtype)
         for k, sub_kernel in enumerate(self.sub_kernels):
-            K_k = sub_kernel(X[:, k])  # (n, n)
+            y_col = Y[:, k] if cross_mode else None
+            K_k = sub_kernel(X[:, k], y_col)  # (n, m)
             K = K + alphas[k] * K_k
-        
-        # Check symmetry before forcing it(for debugging/monitoring like we discussed above)
-        asymmetry = torch.norm(K - K.T, p='fro') / (torch.norm(K, p='fro') + 1e-8)
-        if asymmetry > self.symmetry_tolerance:
-            warnings.warn(
-                f"Kernel matrix asymmetry detected: {asymmetry.item():.2e}. "
-                f"This may indicate numerical instability."
-            )
-        
-        # Force perfect symmetry(as mentioned above, this is done by averaging K with its transpose) even if asymmetry is below tolerance
-        K = 0.5 * (K + K.T)
-        
+
+        if not cross_mode:
+            # Symmetry enforcement only applies to self-kernels
+            asymmetry = torch.norm(K - K.T, p='fro') / (torch.norm(K, p='fro') + 1e-8)
+            if asymmetry > self.symmetry_tolerance:
+                warnings.warn(
+                    f"Kernel matrix asymmetry detected: {asymmetry.item():.2e}. "
+                    f"This may indicate numerical instability."
+                )
+            K = 0.5 * (K + K.T)
+
         return K
     
     def get_lasso_penalty(self, lambda_val: float = 0.0) -> torch.Tensor:

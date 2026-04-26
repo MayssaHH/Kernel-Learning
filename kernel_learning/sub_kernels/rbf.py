@@ -11,8 +11,10 @@ class RBFSubKernel(BaseSubKernel):
         super().__init__()
         self.gamma = nn.Parameter(torch.tensor(initial_gamma))
     
-    def forward(self, x_col: torch.Tensor) -> torch.Tensor:
-        # Vectorized: broadcast to compute all pairwise differences
-        diff = x_col.unsqueeze(1) - x_col.unsqueeze(0) #NOTE: unsqueeze(1) adds a dimension at position 1, making it (n, 1); unsqueeze(0) adds a dimension at position 0, making it (1, n) #NOTE: you might ask how can we do (n,1) - (1,n)? broadcasting allows this operation by expanding the dimensions of the tensors to be compatible for element-wise operations. meaning we will take each element in (n,1) and subtract it from each element in (1,n), resulting in a (n,n) matrix where each entry (i,j) is the difference between x_col[i] and x_col[j].
-        K = torch.exp(-self.gamma * diff ** 2)
-        return K
+    def forward(self, x_col: torch.Tensor,
+                y_col: torch.Tensor = None) -> torch.Tensor:
+        if y_col is None:
+            y_col = x_col
+        # x_col shape (n,), y_col shape (m,) → diff shape (n, m)
+        diff = x_col.unsqueeze(1) - y_col.unsqueeze(0)
+        return torch.exp(-self.gamma * diff ** 2)

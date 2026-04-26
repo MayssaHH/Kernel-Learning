@@ -48,13 +48,10 @@ class KernelRidgeClassifier:
         return self._call_kernel(X, X)
 
     def _cross_kernel(self, X_test: torch.Tensor, X_train: torch.Tensor) -> torch.Tensor:
-        """Compute K(X_test, X_train)."""
+        """Compute K(X_test, X_train) — shape (n_test, n_train)."""
         if hasattr(self.kernel, 'forward'):
-            # KernelNetwork: concatenate and slice (existing approach)
-            X_all = torch.cat([X_test, X_train], dim=0)
-            K_all = self.kernel(X_all)
-            n_test = X_test.shape[0]
-            return K_all[:n_test, n_test:]
+            # KernelNetwork supports cross-kernel via forward(X, Y)
+            return self.kernel(X_test, X_train)
         return self._call_kernel(X_test, X_train)
 
     def _call_kernel(self, X, Y) -> torch.Tensor:
