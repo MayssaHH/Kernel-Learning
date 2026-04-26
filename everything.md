@@ -1,12 +1,10 @@
 # Everything: The Complete Research Reference
 
-> **How to read this document:**
-> Every section references specific figure files. Open the figure alongside this
-> document so you can read the analysis and see the plot at the same time.
-> All figures live in `experiments/classification_v2/figures/`.
+> **Figures are embedded inline throughout this document.**
+> Scroll through to see every plot right next to its analysis.
+> All figure files also live in `experiments/classification_v2/figures/` if you want to open them full-size.
 >
-> **Start with the simple figures** (`figures/simple_fig*`) if you want the
-> big picture first. Then dive into the detailed sections.
+> **Start with Section 1 and the simple figures** for the big picture, then dive into the detailed sections.
 
 ---
 
@@ -37,7 +35,9 @@
 
 ## 1. The Big Idea
 
-> **See first:** `figures/simple_fig6_model_explainer.png` — a diagram of how each model works.
+> **Start here — how each model works:**
+
+![Model explainer diagram](experiments/classification_v2/figures/simple_fig6_model_explainer.png)
 
 **The problem with standard kernels:**
 
@@ -77,8 +77,9 @@ Both are evaluated against every standard baseline with two different classifier
 
 ### 2.1 KernelNetwork — Per-Feature Additive Kernel
 
-> **Diagram:** `figures/simple_fig6_model_explainer.png` (left panel)
-> **Feature importance:** `figures/simple_fig5_alpha_story.png`
+> **Feature importance — what the model learns:**
+
+![Alpha weights: feature selection story](experiments/classification_v2/figures/simple_fig5_alpha_story.png)
 
 #### The Formula
 
@@ -178,8 +179,9 @@ need 12 GB for a 40K-point decision boundary grid).
 
 ### 2.2 KAN_Kernel_NX — KAN-Based Kernel
 
-> **Diagram:** `figures/simple_fig6_model_explainer.png` (middle panel)
-> **Comparison with KN:** `figures/simple_fig4_kan_vs_kn.png`
+> **KAN vs KernelNetwork — accuracy on every dataset:**
+
+![KAN vs KernelNetwork comparison](experiments/classification_v2/figures/simple_fig4_kan_vs_kn.png)
 
 #### The Formula
 
@@ -377,69 +379,87 @@ Our numbers are directly comparable to Table 2 with no methodological gap.
 
 ## 5. Datasets
 
-> **See:** `figures/datasets/dataset_overview.png` — all 10 datasets at a glance
-> (class balance + 2D PCA coloured by class label).
->
-> Individual dataset figures: `figures/datasets/dataset_{name}.png`
-> Each shows: class balance bar · 2D PCA scatter · top feature violin plots
+> **All 10 datasets at a glance — class balance and 2D PCA:**
+
+![Dataset overview](experiments/classification_v2/figures/datasets/dataset_overview.png)
 
 ### 5.1 The 10 UCI Datasets
 
-#### Iris `figures/datasets/dataset_iris.png`
+#### Iris
+
+![Iris dataset](experiments/classification_v2/figures/datasets/dataset_iris.png)
 - **n=150** (train 120, test 30), **p=4** features (sepal/petal length and width)
 - Classes: Setosa (positive) vs Versicolor+Virginica (negative)
 - **Character:** Trivially separable. Setosa forms a completely isolated cluster in any 2D projection. Every method achieves 100%.
 - **Learning insight:** No test of feature selection — all 4 features are relevant.
 
-#### Wine `figures/datasets/dataset_wine.png`
+#### Wine
+
+![Wine dataset](experiments/classification_v2/figures/datasets/dataset_wine.png)
 - **n=178** (train 142, test 36), **p=13** features (alcohol, malic acid, ash, alkalinity, magnesium, phenols, flavanoids, nonflavanoid phenols, proanthocyanins, colour intensity, hue, OD280/OD315, proline)
 - Classes: Cultivar 1 (positive) vs Cultivars 2 & 3 (negative)
 - **Character:** Moderate difficulty. All 13 chemical measurements are informative. PCA shows clear separation but with some overlap. Global polynomial kernels (SMKL) achieve 100%.
 - **Learning insight:** Cross-feature interactions (polynomial kernels) help here. Our per-feature kernel cannot exploit them.
 
-#### Breast Cancer Wisconsin `figures/datasets/dataset_breastcancer.png`
+#### Breast Cancer Wisconsin
+
+![Breastcancer dataset](experiments/classification_v2/figures/datasets/dataset_breastcancer.png)
 - **n=569** (train 455, test 114), **p=30** features (mean, SE, and "worst" value of 10 morphological measurements per tumour nucleus: radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal dimension)
 - Classes: Malignant M (positive) vs Benign B (negative)
 - **Character:** Moderate. 30 features, many correlated (mean/SE/worst of the same measurement). Malignant tumours tend to be larger and more irregular. PCA shows two overlapping elongated clusters.
 - **Best result:** KN+Mixed+SVM = **97.4%** (vs SMKL's 98.3% — only 0.9pp gap)
 
-#### Ionosphere `figures/datasets/dataset_ionosphere.png`
+#### Ionosphere
+
+![Ionosphere dataset](experiments/classification_v2/figures/datasets/dataset_ionosphere.png)
 - **n=351** (train 280, test 71), **p=34** features (radar return measurements)
 - Classes: "Good" return (positive) vs "Bad" return (negative)
 - **Character:** Moderate. Critical detail: **feature index 1 is constant zero** for all samples — it carries absolutely no information. A global kernel includes it in ‖x‖² harmlessly (it's always 0), but an explicit feature-importance method should zero it out.
 - **Best result (KRR):** KN+RBF = **93.0%** — ties SMKL. Beats EasyMKL (73.2%) and AverageMKL (74.6%) massively.
 
-#### Spambase `figures/datasets/dataset_spambase.png`
+#### Spambase
+
+![Spambase dataset](experiments/classification_v2/figures/datasets/dataset_spambase.png)
 - **n=4601** (train 3,680, test 921), **p=57** features (48 word frequencies, 6 character frequencies, 3 run-length statistics)
 - Classes: Spam (positive, label=1) vs Not Spam (negative, label=0)
 - **Character:** Hard. Largest dataset. Most word frequencies are zero for any given email — the data is extremely sparse. Global kernels compute ‖x‖² over all 57 dimensions; most contribute noise.
 - **Best result (both classifiers):** KN+RBF = **93.1%** with both KRR and SVM — beats SMKL (90.9%) by +2.2pp consistently.
 
-#### Banknote Authentication `figures/datasets/dataset_banknote.png`
+#### Banknote Authentication
+
+![Banknote dataset](experiments/classification_v2/figures/datasets/dataset_banknote.png)
 - **n=1372** (train 1,097, test 275), **p=4** features (wavelet transform statistics: variance, skewness, curtosis, entropy)
 - Classes: Authentic (positive) vs Fake (negative)
 - **Character:** Easy. Very clean clusters. All 4 wavelet features contribute to the decision — no noise features. Global kernels achieve 100%.
 - **Learning insight:** Our per-feature decomposition with only 4 features doesn't help — there are no uninformative features to suppress. We achieve 85–92% vs 100% for global kernels.
 
-#### Heart Disease (Cleveland) `figures/datasets/dataset_heart.png`
+#### Heart Disease (Cleveland)
+
+![Heart dataset](experiments/classification_v2/figures/datasets/dataset_heart.png)
 - **n=303** (train 242, test 61), **p=13** features (age, sex, chest pain type, resting blood pressure, cholesterol, fasting blood sugar, resting ECG, max heart rate, exercise-induced angina, ST depression, slope of ST segment, number of major vessels, thal)
 - Classes: No disease (positive, num=0) vs Disease (negative, num>0)
 - **Character:** Hard. Small dataset with mixed numeric and categorical features. Significant overlap in PCA. SMKL achieves 93.4% using polynomial cross-feature interactions.
 - **Result:** Our models reach 80–83%. SMKL wins here clearly.
 
-#### Haberman Survival `figures/datasets/dataset_haberman.png`
+#### Haberman Survival
+
+![Haberman dataset](experiments/classification_v2/figures/datasets/dataset_haberman.png)
 - **n=306** (train 244, test 62), **p=3** features (age at operation, year of operation, number of positive axillary nodes detected)
 - Classes: Survived ≥5 years (positive) vs Died within 5 years (negative)
 - **Character:** Very hard. Only 3 features. Severe class imbalance (225 survived, 81 died = 74%/26%). The two classes are almost indistinguishable in PCA — they overlap heavily. The key signal is almost entirely in "positive axillary nodes" (number of cancer nodes detected at surgery).
 - **Our standout result:** KN+Mixed+KRR = **82.3%** — beats SMKL by +14.6pp (67.7%). With SVM, our kernel still beats SMKL by +12.9pp (80.6% vs 67.7%). The α mechanism correctly identifies axillary nodes as the critical feature.
 
-#### Mammographic Mass `figures/datasets/dataset_mammographic.png`
+#### Mammographic Mass
+
+![Mammographic dataset](experiments/classification_v2/figures/datasets/dataset_mammographic.png)
 - **n=961** (train 768, test 193), **p=5** features (BI-RADS assessment 1–6, age, shape, margin, density)
 - Classes: Malignant mass (positive, severity=1) vs Benign (negative, severity=0)
 - **Character:** Moderate. Small feature space (p=5) but ordinal features with missing values (replaced with 0). BI-RADS score is the single strongest predictor (radiologist's expert assessment).
 - **Best result (KRR):** KN+Mixed = **86.0%** — beats SMKL (84.5%) by +1.5pp.
 
-#### Parkinsons Disease `figures/datasets/dataset_parkinsons.png`
+#### Parkinsons Disease
+
+![Parkinsons dataset](experiments/classification_v2/figures/datasets/dataset_parkinsons.png)
 - **n=195** (train 156, test 39), **p=22** features (MDVP fundamental frequency Fo, Fhi, Flo; jitter variants; shimmer variants; NHR; HNR; RPDE; DFA; spread1; spread2; D2; PPE)
 - Classes: Has Parkinson's (positive, status=1) vs Healthy control (negative, status=0)
 - **Character:** Moderate. Small n, all 22 voice features capture different aspects of vocal cord tremor. Global KRR-RBF with auto-γ achieves 97.4% — it perfectly fits this small, dense dataset.
@@ -535,13 +555,17 @@ This matches Bertsimas et al. exactly (same seed, same ddof=1 standardisation).
 
 ## 7. Results: KRR Classifier
 
-> **Figures:**
-> - `figures/krr/krr_grouped_bars.png` — all methods × all datasets as grouped bars
-> - `figures/krr/krr_scorecard.png` — colour-coded table (green=best, red=worst per row)
-> - `figures/krr/krr_mean_rank.png` — mean rank across all 10 datasets
-> - `figures/krr/krr_our_vs_best.png` — our best vs best global baseline, with gap
-> - `figures/simple_fig1_us_vs_smkl.png` — simplified: our best vs SMKL scorecard
-> - `figures/simple_fig3_scorecard.png` — clean traffic-light accuracy table
+### KRR Results — Figures
+
+![Our model vs SMKL — simplified scorecard](experiments/classification_v2/figures/simple_fig1_us_vs_smkl.png)
+
+![All methods per dataset — grouped bars (KRR)](experiments/classification_v2/figures/krr/krr_grouped_bars.png)
+
+![Accuracy scorecard — green=best, red=worst per row (KRR)](experiments/classification_v2/figures/krr/krr_scorecard.png)
+
+![Mean rank across 10 datasets (KRR)](experiments/classification_v2/figures/krr/krr_mean_rank.png)
+
+![Our best vs best global baseline per dataset (KRR)](experiments/classification_v2/figures/krr/krr_our_vs_best.png)
 
 ### 7.1 Complete Results Table (KRR, λ=10⁻⁴)
 
@@ -627,11 +651,15 @@ or partially informative features — exactly the domain where feature selection
 
 ## 8. Results: SVM Classifier
 
-> **Figures:**
-> - `figures/svm/svm_grouped_bars.png` — all methods × all datasets
-> - `figures/svm/svm_scorecard.png` — colour-coded accuracy table
-> - `figures/svm/svm_mean_rank.png` — mean rank
-> - `figures/svm/svm_our_vs_best.png` — our best vs best global, with gap
+### SVM Results — Figures
+
+![All methods per dataset — grouped bars (SVM)](experiments/classification_v2/figures/svm/svm_grouped_bars.png)
+
+![Accuracy scorecard — green=best, red=worst per row (SVM)](experiments/classification_v2/figures/svm/svm_scorecard.png)
+
+![Mean rank across 10 datasets (SVM)](experiments/classification_v2/figures/svm/svm_mean_rank.png)
+
+![Our best vs best global baseline per dataset (SVM)](experiments/classification_v2/figures/svm/svm_our_vs_best.png)
 
 ### 8.1 Complete Results Table (SVM, C=1.0, precomputed kernel)
 
@@ -699,7 +727,7 @@ Our KN still beats SMKL convincingly on both classifiers.
 
 ## 9. KRR vs SVM: Does the Classifier Matter?
 
-> **Figure:** `figures/krr_vs_svm_comparison.png` — our kernels with KRR vs SVM side-by-side.
+![KRR vs SVM — our kernels evaluated with both classifiers](experiments/classification_v2/figures/krr_vs_svm_comparison.png)
 
 ### 9.1 The Key Insight for Each Method
 
@@ -732,10 +760,11 @@ The advantage is robust.
 
 ## 10. Feature Importance Analysis
 
-> **Figures:**
-> - `figures/simple_fig5_alpha_story.png` — **start here**: plain one-panel alpha story
-> - `figures/fig3_alpha_profiles.png` — full analysis: professor (8 runs) + breastcancer + spambase
-> - `figures/kan_fig3_feature_importance.png` — KAN gradient sensitivity vs KN alpha side-by-side
+![Alpha weights: feature selection on professor synthetic data](experiments/classification_v2/figures/simple_fig5_alpha_story.png)
+
+![Full alpha profiles — professor data (8 runs) + breastcancer + spambase](experiments/classification_v2/figures/fig3_alpha_profiles.png)
+
+![KAN gradient sensitivity vs KernelNetwork alpha — side by side](experiments/classification_v2/figures/kan_fig3_feature_importance.png)
 
 ### 10.1 The Experiment
 
@@ -792,11 +821,13 @@ what the classification is based on.
 
 ## 11. Noise Robustness
 
-> **Figures:**
-> - `figures/fig4_snr_phase_diagram.png` — KN: 4-model × 5 SNR curves (25-cell grid)
-> - `figures/fig4b_advantage_map.png` — KN advantage map (green = we win)
-> - `figures/kan_fig4_snr_phase_diagram.png` — KAN included in the sweep
-> - `figures/kan_fig4b_advantage_map.png` — KAN advantage map
+![SNR phase diagram — KernelNetwork (4 models, 5 SNR levels, 5 noise levels)](experiments/classification_v2/figures/fig4_snr_phase_diagram.png)
+
+![Advantage map — KernelNetwork wins where it's green](experiments/classification_v2/figures/fig4b_advantage_map.png)
+
+![SNR phase diagram — KAN included](experiments/classification_v2/figures/kan_fig4_snr_phase_diagram.png)
+
+![Advantage map — KAN vs best competitor](experiments/classification_v2/figures/kan_fig4b_advantage_map.png)
 
 ### 11.1 Experiment Setup
 
@@ -855,9 +886,9 @@ At the extremes (very easy or very hard), all methods behave similarly.
 
 ## 12. Decision Boundaries
 
-> **Figures:**
-> - `figures/fig2_decision_boundaries.png` — KN: 3 datasets × 5 methods grid
-> - `figures/kan_fig2_decision_boundaries.png` — KAN vs KN side-by-side
+![Decision boundaries — KernelNetwork (3 datasets × 5 methods)](experiments/classification_v2/figures/fig2_decision_boundaries.png)
+
+![Decision boundaries — KAN vs KernelNetwork side by side](experiments/classification_v2/figures/kan_fig2_decision_boundaries.png)
 
 ### 12.1 Setup
 
@@ -911,9 +942,9 @@ attend to, producing a cleaner boundary in the signal subspace.
 
 ## 13. Training Convergence
 
-> **Figures:**
-> - `figures/fig5_convergence.png` — KN: alignment loss + accuracy over 800 epochs
-> - `figures/kan_fig5_convergence.png` — KAN vs KN head-to-head on breastcancer
+![Training convergence — KernelNetwork (loss + accuracy vs epoch)](experiments/classification_v2/figures/fig5_convergence.png)
+
+![Training convergence — KAN vs KernelNetwork head-to-head](experiments/classification_v2/figures/kan_fig5_convergence.png)
 
 ### 13.1 Setup
 
@@ -954,7 +985,7 @@ are well-correlated.
 
 ## 14. KAN vs KernelNetwork: Full Analysis
 
-> **Main figure:** `figures/simple_fig4_kan_vs_kn.png` — horizontal bars showing every dataset
+![KAN vs KernelNetwork — accuracy gap on every dataset](experiments/classification_v2/figures/simple_fig4_kan_vs_kn.png)
 
 ### 14.1 Complete Head-to-Head Results
 
