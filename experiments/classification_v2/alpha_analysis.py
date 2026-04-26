@@ -39,7 +39,8 @@ from kernel_learning.methods.kernel_ridge_classifier import KernelRidgeClassifie
 
 from datasets import load_uci_split, to_tensors
 
-DEVICE = torch.device("cpu")  # small n — CPU is fine, keeps GPU free for benchmark
+_GPU = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+_CPU = torch.device("cpu")
 FIGURES_DIR = Path(__file__).parent / "figures"
 FIGURES_DIR.mkdir(exist_ok=True)
 
@@ -47,7 +48,10 @@ FIGURES_DIR.mkdir(exist_ok=True)
 # ── Training helper ────────────────────────────��──────────────────────────────
 
 def build_and_train(X_tr: torch.Tensor, y_tr: torch.Tensor,
-                    arch="all_rbf", epochs=800, lr=3e-3) -> KernelNetwork:
+                    arch="all_rbf", epochs=800, lr=3e-3,
+                    device=None) -> KernelNetwork:
+    if device is None:
+        device = _GPU
     p = X_tr.shape[1]
     if arch == "all_rbf":
         subs = [RBFSubKernel(initial_gamma=0.5) for _ in range(p)]
@@ -59,9 +63,9 @@ def build_and_train(X_tr: torch.Tensor, y_tr: torch.Tensor,
         subs += [LinearSubKernel() for _ in range(p - n_rbf)]
 
     model = KernelNetwork(sub_kernels=subs, alpha_constraint="square",
-                          normalize_alphas=True, alpha_init="random").to(DEVICE)
-    X_t = X_tr.to(DEVICE)
-    y_t = y_tr.to(DEVICE)
+                          normalize_alphas=True, alpha_init="random").to(device)
+    X_t = X_tr.to(device)
+    y_t = y_tr.to(device)
     criterion = AlignmentLoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
     for _ in range(epochs):
@@ -121,13 +125,18 @@ def run_professor_scenario(n_runs=8, n=300, p1=4, p2=4, pc=2, pn=8, snr=2.0):
 
 # ── Scenario B/C: UCI datasets ──────────────────────────────��─────────────────
 
+_LARGE_N_DATASETS = {"spambase"}
+
 def run_uci_alpha(dataset_name: str, n_runs=5, epochs=800) -> np.ndarray:
+    device = _GPU if dataset_name in _LARGE_N_DATASETS else _CPU
     all_alphas = []
     for run in range(n_runs):
         X_tr_np, y_tr_np, X_te_np, y_te_np, info = load_uci_split(dataset_name, seed=123 + run * 7)
         X_tr, y_tr, X_te, y_te = to_tensors(X_tr_np, y_tr_np, X_te_np, y_te_np)
-        model = build_and_train(X_tr, y_tr, arch="all_rbf", epochs=epochs, lr=3e-3)
+        model = build_and_train(X_tr, y_tr, arch="all_rbf", epochs=epochs, lr=3e-3, device=device)
         all_alphas.append(model._get_alphas().detach().cpu().numpy())
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         print(f"    {dataset_name} run {run+1}/{n_runs} done")
     return np.array(all_alphas)
 
@@ -208,13 +217,13 @@ def run(save_path: str = None):
         n_runs=8, n=300, p1=p1, p2=p2, pc=pc, pn=pn, snr=2.0
     )
 
-    # ── B: UCI breastcancer ───────────────────────────────────���───────────────
+    # ── B: UCI breastcancer ──────────────────────────────────────────────────
     print("\n  [B] UCI breastcancer ...")
-    alpha_bc = run_uci_alpha("breastcancer", n_runs=5, epochs=800)
+    alpha_bc = run_uci_alpha("breastcancer", n_runs=5, epochs=600)
 
-    # ── C: UCI spambase ───────────────────────��───────────────────────────────
+    # ── C: UCI spambase (runs on GPU, fewer epochs — large n converges fast) ─
     print("\n  [C] UCI spambase ...")
-    alpha_spam = run_uci_alpha("spambase", n_runs=3, epochs=600)
+    alpha_spam = run_uci_alpha("spambase", n_runs=2, epochs=300)
 
     # ── Figure ──────────────────────��──────────────────────────────��─────────
     fig = plt.figure(figsize=(16, 14), facecolor="#fafafa")
