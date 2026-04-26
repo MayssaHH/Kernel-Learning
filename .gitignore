@@ -47,3 +47,7 @@ htmlcov/
 *.pyre/
 .pyre/
 uv.lock
+# pykan auto-generated checkpoint directories
+model/
+**/model/0.0_*
+**/model/history.txt
