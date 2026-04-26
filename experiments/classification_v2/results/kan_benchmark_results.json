@@ -1,0 +1,502 @@
+{
+  "breastcancer": {
+    "KAN+KRR": {
+      "accuracy_pct": 91.228,
+      "final_loss": -0.999999,
+      "train_time_s": 462.75
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 93.86,
+      "train_time_s": 0.007
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 94.737,
+      "train_time_s": 0.002
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 89.474,
+      "train_time_s": 0.003
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 92.105,
+      "train_time_s": 0.102
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 93.86,
+      "train_time_s": 0.068
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 95.614,
+      "train_time_s": 0.012
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 79.825,
+      "train_time_s": 0.01
+    },
+    "_paper_baselines": {
+      "EasyMKL": 93.0,
+      "AverageMKL": 92.1,
+      "CKA": 94.7,
+      "SMKL": 98.3
+    },
+    "_dataset_info": {
+      "dataset": "breastcancer",
+      "n_samples": 569,
+      "n_features": 30,
+      "train_size": 455,
+      "test_size": 114,
+      "positive_count": 212,
+      "negative_count": 357
+    }
+  },
+  "ionosphere": {
+    "KAN+KRR": {
+      "accuracy_pct": 64.789,
+      "final_loss": -0.998997,
+      "train_time_s": 610.73
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 94.366,
+      "train_time_s": 0.003
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 90.141,
+      "train_time_s": 0.004
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 67.606,
+      "train_time_s": 0.002
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 76.056,
+      "train_time_s": 0.038
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 81.69,
+      "train_time_s": 0.025
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 88.732,
+      "train_time_s": 0.01
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 67.606,
+      "train_time_s": 0.006
+    },
+    "_paper_baselines": {
+      "EasyMKL": 73.2,
+      "AverageMKL": 74.6,
+      "CKA": 85.9,
+      "SMKL": 93.0
+    },
+    "_dataset_info": {
+      "dataset": "ionosphere",
+      "n_samples": 351,
+      "n_features": 34,
+      "train_size": 280,
+      "test_size": 71,
+      "positive_count": 225,
+      "negative_count": 126
+    }
+  },
+  "spambase": {
+    "KAN+KRR": {
+      "accuracy_pct": 88.382,
+      "final_loss": -0.972024,
+      "train_time_s": 590.86
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 94.463,
+      "train_time_s": 0.228
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 93.594,
+      "train_time_s": 0.447
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 78.936,
+      "train_time_s": 0.414
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 86.645,
+      "train_time_s": 18.319
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 91.748,
+      "train_time_s": 12.673
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 90.879,
+      "train_time_s": 1.362
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 64.495,
+      "train_time_s": 1.826
+    },
+    "_paper_baselines": {
+      "EasyMKL": 90.4,
+      "AverageMKL": 87.6,
+      "CKA": 81.0,
+      "SMKL": 90.9
+    },
+    "_dataset_info": {
+      "dataset": "spambase",
+      "n_samples": 4601,
+      "n_features": 57,
+      "train_size": 3680,
+      "test_size": 921,
+      "positive_count": 1813,
+      "negative_count": 2788
+    }
+  },
+  "banknote": {
+    "KAN+KRR": {
+      "accuracy_pct": 57.091,
+      "final_loss": -0.97063,
+      "train_time_s": 11.55
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.006
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.007
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 99.636,
+      "train_time_s": 0.01
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.104
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.105
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 98.545,
+      "train_time_s": 0.07
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.144
+    },
+    "_paper_baselines": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 85.1,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "banknote",
+      "n_samples": 1372,
+      "n_features": 4,
+      "train_size": 1097,
+      "test_size": 275,
+      "positive_count": 610,
+      "negative_count": 762
+    }
+  },
+  "haberman": {
+    "KAN+KRR": {
+      "accuracy_pct": 30.645,
+      "final_loss": -0.478336,
+      "train_time_s": 16.63
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 0.014
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 0.002
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 80.645,
+      "train_time_s": 0.011
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 74.194,
+      "train_time_s": 0.005
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 69.355,
+      "train_time_s": 0.005
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 77.419,
+      "train_time_s": 0.001
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 82.258,
+      "train_time_s": 0.002
+    },
+    "_paper_baselines": {
+      "EasyMKL": 61.3,
+      "AverageMKL": 62.9,
+      "CKA": 66.1,
+      "SMKL": 67.7
+    },
+    "_dataset_info": {
+      "dataset": "haberman",
+      "n_samples": 306,
+      "n_features": 3,
+      "train_size": 244,
+      "test_size": 62,
+      "positive_count": 225,
+      "negative_count": 81
+    }
+  },
+  "mammographic": {
+    "KAN+KRR": {
+      "accuracy_pct": 48.705,
+      "final_loss": -0.645515,
+      "train_time_s": 19.46
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 88.083,
+      "train_time_s": 0.032
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 86.528,
+      "train_time_s": 0.014
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 87.565,
+      "train_time_s": 0.013
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 81.865,
+      "train_time_s": 0.049
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 76.684,
+      "train_time_s": 0.05
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 83.42,
+      "train_time_s": 0.032
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 85.492,
+      "train_time_s": 0.045
+    },
+    "_paper_baselines": {
+      "EasyMKL": 80.8,
+      "AverageMKL": 79.3,
+      "CKA": 75.1,
+      "SMKL": 84.5
+    },
+    "_dataset_info": {
+      "dataset": "mammographic",
+      "n_samples": 961,
+      "n_features": 5,
+      "train_size": 768,
+      "test_size": 193,
+      "positive_count": 445,
+      "negative_count": 516
+    }
+  },
+  "parkinsons": {
+    "KAN+KRR": {
+      "accuracy_pct": 89.744,
+      "final_loss": -1.0,
+      "train_time_s": 308.52
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 94.872,
+      "train_time_s": 0.012
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 82.051,
+      "train_time_s": 0.002
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 82.051,
+      "train_time_s": 0.001
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 97.436,
+      "train_time_s": 0.004
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 97.436,
+      "train_time_s": 0.003
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 58.974,
+      "train_time_s": 0.0
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 89.744,
+      "train_time_s": 0.001
+    },
+    "_paper_baselines": {
+      "EasyMKL": 82.1,
+      "AverageMKL": 82.1,
+      "CKA": 74.4,
+      "SMKL": 89.7
+    },
+    "_dataset_info": {
+      "dataset": "parkinsons",
+      "n_samples": 195,
+      "n_features": 22,
+      "train_size": 156,
+      "test_size": 39,
+      "positive_count": 147,
+      "negative_count": 48
+    }
+  },
+  "wine": {
+    "KAN+KRR": {
+      "accuracy_pct": 77.778,
+      "final_loss": -0.999998,
+      "train_time_s": 99.38
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.002
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.001
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.001
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 94.444,
+      "train_time_s": 0.004
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.002
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 97.222,
+      "train_time_s": 0.0
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 91.667,
+      "train_time_s": 0.001
+    },
+    "_paper_baselines": {
+      "EasyMKL": 97.2,
+      "AverageMKL": 97.2,
+      "CKA": 91.7,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "wine",
+      "n_samples": 178,
+      "n_features": 13,
+      "train_size": 142,
+      "test_size": 36,
+      "positive_count": 59,
+      "negative_count": 119
+    }
+  },
+  "iris": {
+    "KAN+KRR": {
+      "accuracy_pct": 100.0,
+      "final_loss": -0.999798,
+      "train_time_s": 16.25
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.002
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.001
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.0
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 100.0,
+      "train_time_s": 0.0
+    },
+    "_paper_baselines": {
+      "EasyMKL": 100.0,
+      "AverageMKL": 100.0,
+      "CKA": 96.7,
+      "SMKL": 100.0
+    },
+    "_dataset_info": {
+      "dataset": "iris",
+      "n_samples": 150,
+      "n_features": 4,
+      "train_size": 120,
+      "test_size": 30,
+      "positive_count": 50,
+      "negative_count": 100
+    }
+  },
+  "heart": {
+    "KAN+KRR": {
+      "accuracy_pct": 63.934,
+      "final_loss": -0.999915,
+      "train_time_s": 98.72
+    },
+    "SVM-RBF(C=10)": {
+      "accuracy_pct": 83.607,
+      "train_time_s": 0.005
+    },
+    "SVM-Linear(C=1)": {
+      "accuracy_pct": 83.607,
+      "train_time_s": 0.003
+    },
+    "SVM-Poly3(C=1)": {
+      "accuracy_pct": 77.049,
+      "train_time_s": 0.003
+    },
+    "KRR-RBF(\u03b3=auto)": {
+      "accuracy_pct": 78.689,
+      "train_time_s": 0.007
+    },
+    "KRR-RBF(\u03b3=0.5)": {
+      "accuracy_pct": 78.689,
+      "train_time_s": 0.005
+    },
+    "KRR-Linear": {
+      "accuracy_pct": 86.885,
+      "train_time_s": 0.001
+    },
+    "KRR-Poly3": {
+      "accuracy_pct": 72.131,
+      "train_time_s": 0.003
+    },
+    "_paper_baselines": {
+      "EasyMKL": 85.2,
+      "AverageMKL": 85.2,
+      "CKA": 86.9,
+      "SMKL": 93.4
+    },
+    "_dataset_info": {
+      "dataset": "heart",
+      "n_samples": 303,
+      "n_features": 13,
+      "train_size": 242,
+      "test_size": 61,
+      "positive_count": 139,
+      "negative_count": 164
+    }
+  }
+}
