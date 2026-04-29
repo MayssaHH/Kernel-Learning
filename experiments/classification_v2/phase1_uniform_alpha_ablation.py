@@ -141,7 +141,7 @@ def train_eval_one(
 
     # Only optimize parameters that require grad
     trainable_params = [param for param in model.parameters() if param.requires_grad]
-    optimizer = optim.Adam(trainable_params, lr=lr)
+    num_trainable_params = len(trainable_params)
 
     X_tr_d = X_tr_t.to(device)
     y_tr_d = y_tr_t.to(device)
@@ -149,14 +149,23 @@ def train_eval_one(
     # Training loop
     t0 = time.time()
     final_loss = 0.0
-    for ep in range(eff_epochs):
-        optimizer.zero_grad()
-        K = model(X_tr_d)
-        loss = criterion(K, y_tr_d)
-        loss.backward()
-        torch.nn.utils.clip_grad_norm_(trainable_params, 1.0)
-        optimizer.step()
-        final_loss = loss.item()
+
+    if num_trainable_params > 0:
+        optimizer = optim.Adam(trainable_params, lr=lr)
+        for ep in range(eff_epochs):
+            optimizer.zero_grad()
+            K = model(X_tr_d)
+            loss = criterion(K, y_tr_d)
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(trainable_params, 1.0)
+            optimizer.step()
+            final_loss = loss.item()
+    else:
+        # No trainable params — just compute forward + loss once
+        with torch.no_grad():
+            K = model(X_tr_d)
+            final_loss = criterion(K, y_tr_d).item()
+
     train_time_s = time.time() - t0
 
     # Move to CPU for evaluation
@@ -209,6 +218,8 @@ def train_eval_one(
             "normalize_alphas": True,
             "alpha_init": "ones",
             "raw_alphas_trainable": (alpha_mode == "learned"),
+            "num_trainable_params": num_trainable_params,
+            "has_trainable_params": (num_trainable_params > 0),
         },
         train_time_s=round(train_time_s, 2),
         final_loss=round(final_loss, 6),
